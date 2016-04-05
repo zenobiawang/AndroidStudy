@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ChangeSystemUIActivity"/>
+        <activity android:name=".ui.ChangeSystemUIActivity"/>
 
     </application>
 

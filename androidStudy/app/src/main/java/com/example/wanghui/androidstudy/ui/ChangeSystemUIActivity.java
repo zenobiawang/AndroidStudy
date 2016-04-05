@@ -1,8 +1,10 @@
-package com.example.wanghui.androidstudy;
+package com.example.wanghui.androidstudy.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+
+import com.example.wanghui.androidstudy.R;
 
 /**
  * Created by wanghui on 2016/4/5.
