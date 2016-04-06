@@ -48,5 +48,6 @@ public class SplashActivity extends FragmentActivity {
     private void goChangeSystemUI() {
         Intent intent = new Intent(this, ChangeSystemUIActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.activity_open_enter, R.anim.activity_open_enter);
     }
 }
