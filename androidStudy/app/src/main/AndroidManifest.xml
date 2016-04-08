@@ -17,7 +17,9 @@
         </activity>
 
         <activity android:name=".ui.ChangeSystemUIActivity"/>
-        <activity android:name=".ui.ScrollActivity"/>
+        <activity android:name=".ui.ScrollActivity"
+            android:hardwareAccelerated="false"/>
+        <activity android:name=".testrxjava.TestRxJavaActivity"/>
     </application>
 
 </manifest>

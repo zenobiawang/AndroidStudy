@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
 
@@ -15,6 +16,7 @@ import com.example.wanghui.androidstudy.ui.ScrollActivity;
 public class SplashActivity extends FragmentActivity {
     private Button mButtonChangeSystemUI;
     private Button mButtonScaleUI;
+    private Button mButtonTestRxJava;
     private SplashClickListener mSplashClickListener;
 
     @Override
@@ -31,6 +33,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonScaleUI = (Button) findViewById(R.id.btn_changeScaleUI);
         setClickListener(mButtonScaleUI);
+
+        mButtonTestRxJava = (Button) findViewById(R.id.btn_test_rxjava);
+        setClickListener(mButtonTestRxJava);
     }
 
     private void setClickListener(View view) {
@@ -49,6 +54,9 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_changeScaleUI:
                     goChangeScaleUI();
                     break;
+                case R.id.btn_test_rxjava:
+                    goTestRxJava();
+                    break;
             }
         }
     }
@@ -61,6 +69,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goChangeScaleUI(){
         Intent intent = new Intent(this, ScrollActivity.class);
+        startActivity(intent);
+    }
+
+    private void goTestRxJava(){
+        Intent intent = new Intent(this, TestRxJavaActivity.class);
         startActivity(intent);
     }
 }
