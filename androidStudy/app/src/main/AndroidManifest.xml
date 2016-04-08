@@ -20,6 +20,7 @@
         <activity android:name=".ui.ScrollActivity"
             android:hardwareAccelerated="false"/>
         <activity android:name=".testrxjava.TestRxJavaActivity"/>
+        <activity android:name=".interaction.MultiTouchActivity"/>
     </application>
 
 </manifest>

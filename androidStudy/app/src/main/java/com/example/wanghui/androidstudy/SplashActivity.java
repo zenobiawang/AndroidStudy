@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
@@ -17,6 +18,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonChangeSystemUI;
     private Button mButtonScaleUI;
     private Button mButtonTestRxJava;
+    private Button mButtonMultiTouch;
     private SplashClickListener mSplashClickListener;
 
     @Override
@@ -36,6 +38,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonTestRxJava = (Button) findViewById(R.id.btn_test_rxjava);
         setClickListener(mButtonTestRxJava);
+
+        mButtonMultiTouch = (Button) findViewById(R.id.btn_multi_touch);
+        setClickListener(mButtonMultiTouch);
     }
 
     private void setClickListener(View view) {
@@ -57,6 +62,9 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_test_rxjava:
                     goTestRxJava();
                     break;
+                case R.id.btn_multi_touch:
+                    goMultiTouch();
+                    break;
             }
         }
     }
@@ -74,6 +82,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goTestRxJava(){
         Intent intent = new Intent(this, TestRxJavaActivity.class);
+        startActivity(intent);
+    }
+
+    private void goMultiTouch(){
+        Intent intent = new Intent(this, MultiTouchActivity.class);
         startActivity(intent);
     }
 }
