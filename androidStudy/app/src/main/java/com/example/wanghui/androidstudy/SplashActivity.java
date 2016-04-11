@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
+import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
@@ -19,6 +20,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonScaleUI;
     private Button mButtonTestRxJava;
     private Button mButtonMultiTouch;
+    private Button mButtonMediaVideo;
     private SplashClickListener mSplashClickListener;
 
     @Override
@@ -41,6 +43,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonMultiTouch = (Button) findViewById(R.id.btn_multi_touch);
         setClickListener(mButtonMultiTouch);
+
+        mButtonMediaVideo = (Button) findViewById(R.id.btn_media_video);
+        setClickListener(mButtonMediaVideo);
     }
 
     private void setClickListener(View view) {
@@ -65,6 +70,8 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_multi_touch:
                     goMultiTouch();
                     break;
+                case R.id.btn_media_video:
+                    goMediaVideo();
             }
         }
     }
@@ -87,6 +94,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goMultiTouch(){
         Intent intent = new Intent(this, MultiTouchActivity.class);
+        startActivity(intent);
+    }
+
+    private void goMediaVideo(){
+        Intent intent = new Intent(this, VideoCaptureActivity.class);
         startActivity(intent);
     }
 }
