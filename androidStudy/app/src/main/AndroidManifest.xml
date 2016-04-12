@@ -23,10 +23,14 @@
         <activity android:name=".testrxjava.TestRxJavaActivity"/>
         <activity android:name=".interaction.MultiTouchActivity"/>
         <activity android:name=".media.VideoCaptureActivity"/>
+        <activity android:name=".media.VideoCapture2Activity"/>
+        <activity android:name=".MainActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECOED_VIDEO"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera"/>
 
 </manifest>

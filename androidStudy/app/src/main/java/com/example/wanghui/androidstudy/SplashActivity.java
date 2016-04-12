@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
+import com.example.wanghui.androidstudy.media.VideoCapture2Activity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
@@ -98,7 +99,7 @@ public class SplashActivity extends FragmentActivity {
     }
 
     private void goMediaVideo(){
-        Intent intent = new Intent(this, VideoCaptureActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

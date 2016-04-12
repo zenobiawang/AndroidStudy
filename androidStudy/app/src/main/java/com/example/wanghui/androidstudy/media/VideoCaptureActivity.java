@@ -42,6 +42,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mPreView.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
         if (mCamera == null) {
+            Camera.getNumberOfCameras();
             mCamera = Camera.open();
         }
         mCamera.setDisplayOrientation(90);
