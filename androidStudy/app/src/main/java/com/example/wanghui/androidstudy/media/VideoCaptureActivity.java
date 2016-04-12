@@ -37,6 +37,8 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mButtonRecord = (Button) findViewById(R.id.btn_record);
         mButtonRecord.setText("开始");
 
+        mButtonRecord.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_LAYOUT_STABLE|);
+
         mPreView = (SurfaceView) findViewById(R.id.sfv_video);
         mPreView.getHolder().addCallback(this);
         mPreView.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
