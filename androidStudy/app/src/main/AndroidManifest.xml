@@ -25,12 +25,16 @@
         <activity android:name=".media.VideoCaptureActivity"/>
         <activity android:name=".media.VideoCapture2Activity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".media.DionisPlayerActivity"/><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.RECOED_VIDEO"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera"/>
 
 </manifest>

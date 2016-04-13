@@ -28,4 +28,5 @@ dependencies {
     //    compile 'com.squareup.retrofit:retrofit:1.9.0'
     //    compile 'com.android.tools.build:gradle:1.2.3'
     //    compile 'com.android.databinding:dataBinder:1.0-rc0'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

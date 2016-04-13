@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
+import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCapture2Activity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.File;
 
@@ -27,7 +31,13 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonTestRxJava;
     private Button mButtonMultiTouch;
     private Button mButtonMediaVideo;
+    private Button mButtonDionisPlayer;
     private SplashClickListener mSplashClickListener;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,9 @@ public class SplashActivity extends FragmentActivity {
         setContentView(R.layout.activity_splash);
         mSplashClickListener = new SplashClickListener();
         initView();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initView() {
@@ -52,18 +65,61 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonMediaVideo = (Button) findViewById(R.id.btn_media_video);
         setClickListener(mButtonMediaVideo);
+
+        mButtonDionisPlayer = (Button) findViewById(R.id.btn_dionis_player);
+        setClickListener(mButtonDionisPlayer);
     }
 
     private void setClickListener(View view) {
         view.setOnClickListener(mSplashClickListener);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
-    private class SplashClickListener implements View.OnClickListener{
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Splash Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.wanghui.androidstudy/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Splash Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.wanghui.androidstudy/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
+
+
+    private class SplashClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.btn_changeSystemUI:
                     goChangeSystemUI();
                     break;
@@ -78,6 +134,10 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_media_video:
                     goMediaVideo();
+                    break;
+                case R.id.btn_dionis_player:
+                    goDionisPlayer();
+                    break;
             }
         }
     }
@@ -88,22 +148,22 @@ public class SplashActivity extends FragmentActivity {
         overridePendingTransition(R.anim.activity_open_enter, R.anim.activity_open_enter);
     }
 
-    private void goChangeScaleUI(){
+    private void goChangeScaleUI() {
         Intent intent = new Intent(this, ScrollActivity.class);
         startActivity(intent);
     }
 
-    private void goTestRxJava(){
+    private void goTestRxJava() {
         Intent intent = new Intent(this, TestRxJavaActivity.class);
         startActivity(intent);
     }
 
-    private void goMultiTouch(){
+    private void goMultiTouch() {
         Intent intent = new Intent(this, MultiTouchActivity.class);
         startActivity(intent);
     }
 
-    private void goMediaVideo(){
+    private void goMediaVideo() {
         Intent intent = new Intent(this, VideoCaptureActivity.class);
         startActivity(intent);
 
@@ -115,5 +175,10 @@ public class SplashActivity extends FragmentActivity {
 //        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
 //        startActivity(intent);
 
+    }
+
+    private void goDionisPlayer(){
+        Intent intent = new Intent(this, DionisPlayerActivity.class);
+        startActivity(intent);
     }
 }
