@@ -74,10 +74,14 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         Log.d("wh", "-------surfaceChanged");
         mSurfaceHolder = holder;
-//        Camera.Parameters parameters = mCamera.getParameters();
+        Camera.Parameters parameters = mCamera.getParameters();
 //        Camera.Size size = getBestSupportedSize(parameters.getSupportedPreviewSizes(), width, height);
 //        parameters.setPreviewSize(size.width, size.height);
-//        mCamera.setParameters(parameters);
+        List list = parameters.getSupportedFocusModes();
+        if (list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){
+            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+        }
+        mCamera.setParameters(parameters);
         mCamera.startPreview();
     }
 
@@ -139,10 +143,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         // Set the recording profile.
         CamcorderProfile profile = null;
 
-       if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_720P)) {
-           profile = CamcorderProfile.get(CamcorderProfile.QUALITY_720P);
-           Log.d(":video...", "QUALITY_720P");
-       } else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_480P)) {
+       if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_480P)) {
            profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
            Log.d(":video...", "QUALITY_480P");
        } else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_LOW)) {
@@ -153,7 +154,6 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         if (profile != null) {
             mMediaRecorder.setProfile(profile);
         }
-
 
 
 

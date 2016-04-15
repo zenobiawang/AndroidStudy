@@ -67,11 +67,19 @@ public class TimerView extends View {
         isMoving = true;
     }
 
+    /**
+     * 停止动画
+     * @return 返回当前动画进行到的时间
+     */
     public long stopMoving(){
         mObjectAnimator.cancel();
         return mObjectAnimator.getCurrentPlayTime();
     }
 
+    /**
+     * 设置动画的时长，默认是20s
+     * @param duration
+     */
     public void setDuration(long duration){
         this.mDuration = duration;
     }
