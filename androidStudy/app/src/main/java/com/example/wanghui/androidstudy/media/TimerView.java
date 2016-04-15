@@ -17,7 +17,7 @@ public class TimerView extends View {
     private long mDuration = 20000;
     private ObjectAnimator mObjectAnimator;
     private int mWidth;
-    private boolean mIsFirst = true;
+    private boolean isMoving = false;
     public TimerView(Context context) {
         super(context);
     }
@@ -38,10 +38,11 @@ public class TimerView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int mWidthMeasureSpec = widthMeasureSpec;
-        if (mIsFirst){
-            mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        if (!isMoving){
+            if (mWidth == 0){
+                mWidth = MeasureSpec.getSize(widthMeasureSpec);
+            }
             mWidthMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.getMode(widthMeasureSpec));
-            mIsFirst = false;
         }
         super.onMeasure(mWidthMeasureSpec, heightMeasureSpec);
     }
@@ -63,6 +64,7 @@ public class TimerView extends View {
             initAnimator();
         }
         mObjectAnimator.start();
+        isMoving = true;
     }
 
     public long stopMoving(){
