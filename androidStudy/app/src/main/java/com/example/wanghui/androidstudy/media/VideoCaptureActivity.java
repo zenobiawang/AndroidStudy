@@ -1,6 +1,8 @@
 package com.example.wanghui.androidstudy.media;
 
+import android.content.Context;
 import android.hardware.Camera;
+import android.media.AudioManager;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Build;
@@ -54,6 +56,14 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mTimeView = (TimerView) findViewById(R.id.moving_view);
     }
 
+    /**
+     * 如果有正在使用的音频，关掉(如果可以关掉)
+     */
+    private void initMediaHardWare(){
+        AudioManager audioManager = getSystemService(Context.AUDIO_SERVICE);
+        audioManager.requestAudioFocus(null,AudioManager.STREAM_MUSIC,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+    }
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Log.d("wh", "-------surfaceCreated");
@@ -78,7 +88,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
 //        Camera.Size size = getBestSupportedSize(parameters.getSupportedPreviewSizes(), width, height);
 //        parameters.setPreviewSize(size.width, size.height);
         List list = parameters.getSupportedFocusModes();
-        if (list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){
+        if (list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){    //自动聚焦需要进行适配判断
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
         }
         mCamera.setParameters(parameters);
