@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.wanghui.androidstudy.R;
 
@@ -44,8 +45,8 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mButtonRecord = (Button) findViewById(R.id.btn_record);
         mButtonRecord.setText("开始");
 
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        initMediaHardWare();
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);   //关掉其他正在使用的音频
+        audioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 //        Window window = getWindow();
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
 //                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);          //设置状态栏，虚拟键背景为透明
@@ -53,9 +54,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mPreView = (SurfaceView) findViewById(R.id.sfv_video);
         mPreView.getHolder().addCallback(this);
         mPreView.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
         mMediaRecorder = new MediaRecorder();
-
         mTimeView = (TimerView) findViewById(R.id.moving_view);
     }
 
@@ -64,50 +63,44 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
      */
     private void initMediaHardWare(){
 //        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        audioManager.requestAudioFocus(null,AudioManager.STREAM_MUSIC,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+        audioManager.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        Log.d("wh", "-------surfaceCreated");
         mSurfaceHolder = holder;
-        if (mCamera == null){
-            mCamera = Camera.open();
-            mCamera.setDisplayOrientation(90);
-        }
         try {
+            if (mCamera == null){
+                mCamera = Camera.open();
+                mCamera.setDisplayOrientation(90);
+            }
             mCamera.setPreviewDisplay(holder);
             mCamera.startPreview();
-        } catch (IOException e) {
+        } catch (Exception e) {
+            Log.d("video", "-------surfaceCreated");
             e.printStackTrace();
         }
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        Log.d("wh", "-------surfaceChanged");
+        Log.d("video", "-------surfaceChanged");
         mSurfaceHolder = holder;
         Camera.Parameters parameters = mCamera.getParameters();
 //        Camera.Size size = getBestSupportedSize(parameters.getSupportedPreviewSizes(), width, height);
 //        parameters.setPreviewSize(size.width, size.height);
         List list = parameters.getSupportedFocusModes();
-        if (list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){    //自动聚焦需要进行适配判断
+        if (list != null && list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){    //自动聚焦需要进行适配判断
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
         }
-        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
         mCamera.setParameters(parameters);
         mCamera.startPreview();
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.d("wh", "-------surfaceDestroyed");
+        Log.d("video", "-------surfaceDestroyed");
         mSurfaceHolder = holder;
-        if (mCamera != null){
-            mCamera.stopPreview();
-            mCamera.release();
-            mCamera = null;
-        }
     }
 
     public void onRecordClick(View view) throws IOException {
@@ -155,15 +148,22 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
 
         // 方案2
         // Set the recording profile.
-        CamcorderProfile profile = null;
-
-       if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_480P)) {
-           profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
-           Log.d(":video...", "QUALITY_480P");
-       } else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_LOW)) {
-           profile = CamcorderProfile.get(CamcorderProfile.QUALITY_LOW);
-           Log.d(":video...", "QUALITY_LOW");
-       }
+        CamcorderProfile profile = null;                   //对拍摄质量的适配
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_CIF)){
+                profile = CamcorderProfile.get(CamcorderProfile.QUALITY_CIF);
+                Log.d(":video...", "QUALITY_CIF");
+            }else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_480P)) {
+                profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
+                Log.d(":video...", "QUALITY_480P");
+            } else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_QVGA)) {
+                profile = CamcorderProfile.get(CamcorderProfile.QUALITY_QVGA);
+                Log.d(":video...", "QUALITY_QVGA");
+            } else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_LOW)) {
+                profile = CamcorderProfile.get(CamcorderProfile.QUALITY_LOW);
+                Log.d(":video...", "QUALITY_LOW");
+            }
+        }
 //        profile = CamcorderProfile.get(CamcorderProfile.QUALITY_QVGA);
         if (profile != null) {
             mMediaRecorder.setProfile(profile);
@@ -187,8 +187,9 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
 
     }
 
-    public void onTransformClick(View view) throws IOException {
+    public void onTransformClick(View view){
         if (mRecording){
+            Toast.makeText(this, "不能在录制过程中进行此操作", Toast.LENGTH_SHORT).show();
             return;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
@@ -212,7 +213,12 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
                 mCamera = Camera.open();//打开当前选中的摄像头
                 isCameraBack = true;
             }
-            mCamera.setPreviewDisplay(mSurfaceHolder);
+            try {
+                mCamera.setPreviewDisplay(mSurfaceHolder);
+            } catch (IOException e) {
+                Log.d("video", "-----------onTransformClick");
+                e.printStackTrace();
+            }
             mCamera.startPreview();
             mCamera.setDisplayOrientation(90);
 //            initializeRecorder();
@@ -232,16 +238,35 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         return bestSize;
     }
 
-    public void onTurnOnClick(View view){
+    public void onTurnOnClick(View view){   //打开闪光灯  适配
+        if (mRecording){
+            Toast.makeText(this, "不能在录制过程中进行此操作", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Camera.Parameters parameters = mCamera.getParameters();
         List list = parameters.getSupportedFlashModes();
-        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+        if (list != null && list.contains(Camera.Parameters.FLASH_MODE_ON)){
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+        }
         mCamera.setParameters(parameters);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(":video...", "onPause");
+        Log.d("video", "----onPause");
+        if (mCamera != null){
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        audioManager.abandonAudioFocus(null);
+        mMediaRecorder = null;
+        mCamera = null;
+        super.onDestroy();
     }
 }
