@@ -35,6 +35,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
     private TimerView mTimeView;
     private boolean mRecording = false;     //是否正在录像
     private boolean isCameraBack = true;
+    private AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mButtonRecord = (Button) findViewById(R.id.btn_record);
         mButtonRecord.setText("开始");
 
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        initMediaHardWare();
 //        Window window = getWindow();
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
 //                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);          //设置状态栏，虚拟键背景为透明
@@ -60,7 +63,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
      * 如果有正在使用的音频，关掉(如果可以关掉)
      */
     private void initMediaHardWare(){
-        AudioManager audioManager = getSystemService(Context.AUDIO_SERVICE);
+//        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         audioManager.requestAudioFocus(null,AudioManager.STREAM_MUSIC,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
     }
 
