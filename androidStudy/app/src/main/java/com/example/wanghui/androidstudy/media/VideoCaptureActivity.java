@@ -91,6 +91,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         if (list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){    //自动聚焦需要进行适配判断
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
         }
+        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
         mCamera.setParameters(parameters);
         mCamera.startPreview();
     }
@@ -228,6 +229,12 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         return bestSize;
     }
 
+    public void onTurnOnClick(View view){
+        Camera.Parameters parameters = mCamera.getParameters();
+        List list = parameters.getSupportedFlashModes();
+        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+        mCamera.setParameters(parameters);
+    }
 
     @Override
     protected void onPause() {
