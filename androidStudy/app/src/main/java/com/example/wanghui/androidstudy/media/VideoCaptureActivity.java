@@ -37,6 +37,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
     private boolean mRecording = false;     //是否正在录像
     private boolean isCameraBack = true;
     private AudioManager audioManager;
+    private boolean isFlashOn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -245,8 +246,13 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         }
         Camera.Parameters parameters = mCamera.getParameters();
         List list = parameters.getSupportedFlashModes();
-        if (list != null && list.contains(Camera.Parameters.FLASH_MODE_ON)){
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+        if (list == null){
+            return;
+        }
+        if (isFlashOn && list.contains(Camera.Parameters.FLASH_MODE_OFF)){
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+        }else if ( list.contains(Camera.Parameters.FLASH_MODE_TORCH)){
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
         }
         mCamera.setParameters(parameters);
     }
