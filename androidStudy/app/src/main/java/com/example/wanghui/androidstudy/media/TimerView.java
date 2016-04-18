@@ -67,12 +67,17 @@ public class TimerView extends View {
         isMoving = true;
     }
 
+    public void reset(){
+        setLayoutWidth(0);
+    }
+
     /**
      * 停止动画
      * @return 返回当前动画进行到的时间
      */
     public long stopMoving(){
         mObjectAnimator.cancel();
+        isMoving = false;
         return mObjectAnimator.getCurrentPlayTime();
     }
 
