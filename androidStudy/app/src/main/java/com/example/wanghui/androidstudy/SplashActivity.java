@@ -13,6 +13,7 @@ import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCapture2Activity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
+import com.example.wanghui.androidstudy.media.VideoListActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
@@ -32,6 +33,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonMultiTouch;
     private Button mButtonMediaVideo;
     private Button mButtonDionisPlayer;
+    private Button mButtonVideoList;
     private SplashClickListener mSplashClickListener;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -68,6 +70,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonDionisPlayer = (Button) findViewById(R.id.btn_dionis_player);
         setClickListener(mButtonDionisPlayer);
+
+        mButtonVideoList = (Button) findViewById(R.id.btn_videos_list);
+        setClickListener(mButtonVideoList);
     }
 
     private void setClickListener(View view) {
@@ -97,6 +102,9 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_dionis_player:
                     goDionisPlayer();
+                    break;
+                case R.id.btn_videos_list:
+                    goVideoList();
                     break;
             }
         }
@@ -139,6 +147,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goDionisPlayer(){
         Intent intent = new Intent(this, DionisPlayerActivity.class);
+        startActivity(intent);
+    }
+
+    private void goVideoList(){
+        Intent intent = new Intent(this, VideoListActivity.class);
         startActivity(intent);
     }
 }
