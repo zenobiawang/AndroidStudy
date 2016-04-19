@@ -42,4 +42,9 @@ public class DionisPlayerActivity extends FragmentActivity {
         super.onDestroy();
         mVideoView.stopPlayback();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 }

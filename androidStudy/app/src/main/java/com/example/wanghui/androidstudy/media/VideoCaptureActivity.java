@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.wanghui.androidstudy.R;
 
@@ -190,8 +191,6 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         }
 
 
-
-
         mMediaRecorder.setOutputFile(recordOutput.getAbsolutePath());
         mMediaRecorder.setPreviewDisplay(mPreView.getHolder().getSurface());
         if (isCameraBack){
@@ -201,7 +200,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         }
 
         mMediaRecorder.setMaxDuration(20000);
-//        mMediaRecorder.setMaxFileSize(10000000);       //最大文件数
+        mMediaRecorder.setMaxFileSize(3000000);       //最大文件数
         mMediaRecorder.prepare();
 
 
