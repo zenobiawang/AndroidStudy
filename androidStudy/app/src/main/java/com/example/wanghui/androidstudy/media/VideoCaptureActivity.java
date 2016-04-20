@@ -173,6 +173,8 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_CIF)){
                 profile = CamcorderProfile.get(CamcorderProfile.QUALITY_CIF);
+                Camera.Parameters parameters = mCamera.getParameters();
+//                parameters.setJpegQuality(CameraProfile.);
                 Log.d(":video...", "QUALITY_CIF");
             }else if (CamcorderProfile.hasProfile(CamcorderProfile.QUALITY_480P)) {
                 profile = CamcorderProfile.get(CamcorderProfile.QUALITY_480P);
