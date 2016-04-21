@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
-import com.example.wanghui.androidstudy.media.KeepActivity;
+import com.example.wanghui.androidstudy.keep.KeepActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
