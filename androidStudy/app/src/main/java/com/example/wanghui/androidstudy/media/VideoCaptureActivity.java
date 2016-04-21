@@ -89,6 +89,7 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
             if (list != null && list.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){    //自动聚焦需要进行适配判断
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
             }
+            parameters.setPreviewSize(352, 288);
             mCamera.setParameters(parameters);
             mCamera.startPreview();
         } catch (Exception e) {

@@ -1,27 +1,20 @@
 package com.example.wanghui.androidstudy;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
-import com.example.wanghui.androidstudy.media.VideoCapture2Activity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
-import com.example.wanghui.androidstudy.media.VideoListActivity;
+import com.example.wanghui.androidstudy.media.KeepActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-
-import java.io.File;
 
 /**
  * Created by wanghui on 2016/4/5.
@@ -71,7 +64,7 @@ public class SplashActivity extends FragmentActivity {
         mButtonDionisPlayer = (Button) findViewById(R.id.btn_dionis_player);
         setClickListener(mButtonDionisPlayer);
 
-        mButtonVideoList = (Button) findViewById(R.id.btn_videos_list);
+        mButtonVideoList = (Button) findViewById(R.id.btn_keep_momery);
         setClickListener(mButtonVideoList);
     }
 
@@ -103,8 +96,8 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_dionis_player:
                     goDionisPlayer();
                     break;
-                case R.id.btn_videos_list:
-                    goVideoList();
+                case R.id.btn_keep_momery:
+                    goKeepMomery();
                     break;
             }
         }
@@ -150,8 +143,8 @@ public class SplashActivity extends FragmentActivity {
         startActivity(intent);
     }
 
-    private void goVideoList(){
-        Intent intent = new Intent(this, VideoListActivity.class);
+    private void goKeepMomery(){
+        Intent intent = new Intent(this, KeepActivity.class);
         startActivity(intent);
     }
 }

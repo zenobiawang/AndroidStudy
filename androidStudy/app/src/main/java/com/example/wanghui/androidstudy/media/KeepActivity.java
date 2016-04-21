@@ -10,7 +10,7 @@ import com.example.wanghui.androidstudy.R;
 /**
  * Created by wanghui on 2016/4/19.
  */
-public class VideoListActivity extends FragmentActivity {
+public class KeepActivity extends FragmentActivity {
     private GridView mGridView;
 
     @Override
