@@ -1,11 +1,60 @@
 package com.example.wanghui.androidstudy.testrxjava;
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+
+import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
+import rx.functions.Action1;
 
 /**
  * Created by wanghui on 2016/4/8.
  * RxJava  Demo
  */
 public class TestRxJavaActivity extends FragmentActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("hello world!");
+                subscriber.onCompleted();
+            }
+        });
+
+        Subscriber<String> subscriber = new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                System.out.println(s);
+            }
+        };
+
+        observable.subscribe(subscriber);
+
+        Observable<String> observable1 = Observable.just("hello world2");
+        Action1 action1 = new Action1<String>() {
+
+            @Override
+            public void call(String s) {
+                System.out.println(s);
+            }
+        };
+        observable1.subscribe(action1);
+    }
+
 
 }
