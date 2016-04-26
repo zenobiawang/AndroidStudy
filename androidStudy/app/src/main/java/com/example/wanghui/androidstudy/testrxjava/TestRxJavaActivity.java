@@ -9,6 +9,7 @@ import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
+import rx.functions.Func1;
 
 /**
  * Created by wanghui on 2016/4/8.
@@ -54,6 +55,18 @@ public class TestRxJavaActivity extends FragmentActivity {
             }
         };
         observable1.subscribe(action1);
+
+        Observable.just("hello world!").map(new Func1<String, String>() {
+            @Override
+            public String call(String s) {
+                return s + "- ohh";
+            }
+        }).subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                System.out.println(s);
+            }
+        });
     }
 
 
