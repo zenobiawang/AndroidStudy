@@ -14,6 +14,7 @@ import rx.functions.Func1;
 /**
  * Created by wanghui on 2016/4/8.
  * RxJava  Demo
+ * http://www.tuicool.com/articles/BBNRRf
  */
 public class TestRxJavaActivity extends FragmentActivity {
     @Override
