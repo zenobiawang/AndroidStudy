@@ -5,6 +5,9 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -68,7 +71,25 @@ public class TestRxJavaActivity extends FragmentActivity {
                 System.out.println(s);
             }
         });
+
+        query("hello, world!").flatMap(new Func1<List<String>, Observable<String>>() {
+                    @Override
+                    public Observable<String> call(List<String> urls) {
+                        return Observable.from(urls);
+                    }
+                })
+                .subscribe(new Action1<String>(){
+                    @Override
+                    public void call(String s) {
+                        System.out.println(s);
+                    }
+                }) ;
     }
+
+    Observable<List<String>> query(String text){
+        return Observable.from(new ArrayList<List<String>>());
+    }
+
 
 
 }
