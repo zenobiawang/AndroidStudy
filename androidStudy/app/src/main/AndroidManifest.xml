@@ -27,6 +27,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".media.DionisPlayerActivity"/>
         <activity android:name=".keep.KeepActivity"/>
+        <activity android:name=".media.AudioCaptureActivity"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

@@ -2,7 +2,9 @@ package com.example.wanghui.androidstudy.media;
 
 import android.content.Context;
 import android.hardware.Camera;
+import android.media.AudioFormat;
 import android.media.AudioManager;
+import android.media.AudioRecord;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Build;

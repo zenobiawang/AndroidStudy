@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
+import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
 import com.example.wanghui.androidstudy.keep.KeepActivity;
@@ -27,6 +28,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonMediaVideo;
     private Button mButtonDionisPlayer;
     private Button mButtonVideoList;
+    private Button mButtonMediaAudio;
     private SplashClickListener mSplashClickListener;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -66,6 +68,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonVideoList = (Button) findViewById(R.id.btn_keep_momery);
         setClickListener(mButtonVideoList);
+
+        mButtonMediaAudio = (Button) findViewById(R.id.btn_media_audio);
+        setClickListener(mButtonMediaAudio);
     }
 
     private void setClickListener(View view) {
@@ -99,8 +104,15 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_keep_momery:
                     goKeepMomery();
                     break;
+                case R.id.btn_media_audio:
+                    goMediaAudio();
             }
         }
+    }
+
+    private void goMediaAudio() {
+        Intent intent = new Intent(this, AudioCaptureActivity.class);
+        startActivity(intent);
     }
 
     private void goChangeSystemUI() {
