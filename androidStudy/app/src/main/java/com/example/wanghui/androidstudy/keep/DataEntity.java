@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by wanghui on 2016/4/21.
  */
 public class DataEntity implements Serializable{
-    private String name;
+    public String name;
     private String value;
 
     public DataEntity(String name, String value) {

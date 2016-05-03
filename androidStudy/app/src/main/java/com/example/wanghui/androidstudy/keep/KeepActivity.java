@@ -9,8 +9,10 @@ import android.widget.GridView;
 import com.example.wanghui.androidstudy.R;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +35,22 @@ public class KeepActivity extends FragmentActivity {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            for (int i = 0; i < 10; i ++){
-                objectOutputStream.write(i);
-                objectOutputStream.writeObject(mEntityMap.get(i));
-            }
+            objectOutputStream.writeObject(mEntityMap);
             objectOutputStream.flush();
             objectOutputStream.close();
             fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            mEntityMap.clear();
+            mEntityMap.putAll((Map<? extends String, ? extends DataEntity>) objectInputStream.readObject());
+            for (DataEntity dataEntity : mEntityMap.values()){
+                System.out.println(dataEntity.toString());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
