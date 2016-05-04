@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:padding="30dp"
-    android:background="@color/white">
-    <Button
-        android:id="@+id/btn_changeSystemUI"
-        android:text="切换系统UI元素"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_changeScaleUI"
-        android:text="滚动内容"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_test_rxjava"
-        android:text="RxJava测试"
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_multi_touch"
-        android:text="多点触摸"
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_media_video"
-        android:text="视频采集"
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-    <Button
-        android:id="@+id/btn_dionis_player"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="简易的视频播放"/>
+    >
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:padding="30dp"
+                  android:background="@color/white">
+        <Button
+            android:id="@+id/btn_changeSystemUI"
+            android:text="切换系统UI元素"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_changeScaleUI"
+            android:text="滚动内容"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_test_rxjava"
+            android:text="RxJava测试"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_multi_touch"
+            android:text="多点触摸"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_media_video"
+            android:text="视频采集"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btn_keep_momery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="数据持久化"/>
+        <Button
+            android:id="@+id/btn_dionis_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简易的视频播放"/>
 
-    <Button
-        android:id="@+id/btn_media_audio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="录音"/>
+        <Button
+            android:id="@+id/btn_keep_momery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据持久化"/>
+
+        <Button
+            android:id="@+id/btn_media_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="录音"/>
+        <Button
+            android:id="@+id/btn_handler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="handler"/>
 
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

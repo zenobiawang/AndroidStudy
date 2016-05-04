@@ -29,6 +29,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonDionisPlayer;
     private Button mButtonVideoList;
     private Button mButtonMediaAudio;
+    private Button mButtonHandlder;
     private SplashClickListener mSplashClickListener;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -71,6 +72,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonMediaAudio = (Button) findViewById(R.id.btn_media_audio);
         setClickListener(mButtonMediaAudio);
+
+        mButtonHandlder = (Button) findViewById(R.id.btn_handler);
+        setClickListener(mButtonHandlder);
     }
 
     private void setClickListener(View view) {
@@ -106,6 +110,10 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_media_audio:
                     goMediaAudio();
+                    break;
+                case R.id.btn_handler:
+                    goHandlerMsg();
+                    break;
             }
         }
     }
@@ -158,5 +166,9 @@ public class SplashActivity extends FragmentActivity {
     private void goKeepMomery(){
         Intent intent = new Intent(this, KeepActivity.class);
         startActivity(intent);
+    }
+
+    private void goHandlerMsg(){
+
     }
 }
