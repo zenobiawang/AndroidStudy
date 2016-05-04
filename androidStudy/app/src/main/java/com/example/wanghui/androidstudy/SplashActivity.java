@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wanghui.androidstudy.handler.HandlerMsgActivity;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
@@ -169,6 +170,7 @@ public class SplashActivity extends FragmentActivity {
     }
 
     private void goHandlerMsg(){
-
+        Intent intent = new Intent(this, HandlerMsgActivity.class);
+        startActivity(intent);
     }
 }
