@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Created by wanghui on 2016/4/11.
  */
-public class VideoCaptureActivity extends FragmentActivity implements SurfaceHolder.Callback{
+public class VideoCaptureActivity extends FragmentActivity implements SurfaceHolder.Callback,Camera.PreviewCallback{
     private Button mButtonRecord;
     private SurfaceView mPreView;
     private SurfaceHolder mSurfaceHolder;
@@ -286,5 +286,10 @@ public class VideoCaptureActivity extends FragmentActivity implements SurfaceHol
         mMediaRecorder = null;
         mCamera = null;
         super.onDestroy();
+    }
+
+    @Override
+    public void onPreviewFrame(byte[] data, Camera camera) {
+
     }
 }
