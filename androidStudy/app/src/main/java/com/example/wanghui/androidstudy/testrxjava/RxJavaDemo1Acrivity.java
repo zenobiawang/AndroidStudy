@@ -7,6 +7,12 @@ import android.widget.TextView;
 
 import com.example.wanghui.androidstudy.R;
 
+import rx.Observable;
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
+
 /**
  * Created by wanghui on 2016/5/10.
  */
@@ -50,6 +56,20 @@ public class RxJavaDemo1Acrivity extends FragmentActivity {
     }
 
     private void method2() {
+        Observable.just("aaa").concatMap(new Func1() {
+            @Override
+            public Object call(Object o) {
+                return null;
+            }
+        }).concatMap(new Func1() {
+            @Override
+            public Object call(Object o) {
+                return null;
+            }
+        }).toList()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
 
     }
 }
