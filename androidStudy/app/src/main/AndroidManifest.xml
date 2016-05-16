@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".TestSoftInput">
+        <activity android:name=".testrxjava.RxJavaDemo1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
