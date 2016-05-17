@@ -17,7 +17,8 @@ public class RxJavaDemo1 extends FragmentActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Observable.just("a", "b", "c", "d", "e").map(new Func1<String, Integer>() {
+        Observable.just("a", "b", "c", "d", "e")
+                .map(new Func1<String, Integer>() {
             @Override
             public Integer call(String s) {
                 return 1;
