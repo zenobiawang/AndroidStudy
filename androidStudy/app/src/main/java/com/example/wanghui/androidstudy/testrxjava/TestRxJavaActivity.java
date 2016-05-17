@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import com.example.wanghui.androidstudy.R;
+import com.jakewharton.rxbinding.view.RxView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Observer;
@@ -30,7 +33,14 @@ public class TestRxJavaActivity extends FragmentActivity {
     }
 
     private void setRxClick() {
-//        RxView.click
+        RxView.clicks(findViewById(R.id.test_click))
+                .throttleFirst(3000, TimeUnit.MILLISECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        Toast.makeText(TestRxJavaActivity.this, "clicking", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }
