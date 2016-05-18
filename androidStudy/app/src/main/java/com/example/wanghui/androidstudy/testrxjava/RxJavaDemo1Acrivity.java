@@ -7,9 +7,15 @@ import android.widget.TextView;
 
 import com.example.wanghui.androidstudy.R;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import rx.Observable;
 import rx.Scheduler;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -55,21 +61,27 @@ public class RxJavaDemo1Acrivity extends FragmentActivity {
         });
     }
 
+    private List<Object> getData(){
+        return new ArrayList<>();
+    }
+
     private void method2() {
-        Observable.just("aaa").concatMap(new Func1() {
-            @Override
-            public Object call(Object o) {
-                return null;
-            }
-        }).concatMap(new Func1() {
-            @Override
-            public Object call(Object o) {
-                return null;
-            }
-        }).toList()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+       Observable.create(new Observable.OnSubscribe<Object>() {
+           @Override
+           public void call(Subscriber<? super Object> subscriber) {
+               subscriber.onStart();
+               List l = getData();
+               subscriber.onNext(l);
+               subscriber.onCompleted();
+           }
+       }).subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribe(new Action1<Object>() {
+                   @Override
+                   public void call(Object o) {
+
+                   }
+               });
 
     }
 }

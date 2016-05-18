@@ -36,6 +36,7 @@ public class TestRxJavaActivity extends FragmentActivity {
     }
 
     private void setRxClick() {
+
         RxView.clicks(mButton)
                 .throttleFirst(3000, TimeUnit.MILLISECONDS)
                 .subscribe(new Action1<Void>() {
