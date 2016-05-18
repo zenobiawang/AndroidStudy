@@ -5,7 +5,6 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.tiny.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
