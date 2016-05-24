@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wanghui.androidstudy.expandable.ExpandableTestActivity;
 import com.example.wanghui.androidstudy.handler.HandlerMsgActivity;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
@@ -31,6 +32,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonVideoList;
     private Button mButtonMediaAudio;
     private Button mButtonHandlder;
+    private Button mButtonExpand;
     private SplashClickListener mSplashClickListener;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -76,6 +78,10 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonHandlder = (Button) findViewById(R.id.btn_handler);
         setClickListener(mButtonHandlder);
+
+        mButtonExpand = (Button) findViewById(R.id.btn_Expandable);
+        setClickListener(mButtonExpand);
+
     }
 
     private void setClickListener(View view) {
@@ -114,6 +120,9 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_handler:
                     goHandlerMsg();
+                    break;
+                case R.id.btn_Expandable:
+                    goExpandActivity();
                     break;
             }
         }
@@ -171,6 +180,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goHandlerMsg(){
         Intent intent = new Intent(this, HandlerMsgActivity.class);
+        startActivity(intent);
+    }
+
+    private void goExpandActivity(){
+        Intent intent = new Intent(this, ExpandableTestActivity.class);
         startActivity(intent);
     }
 }
