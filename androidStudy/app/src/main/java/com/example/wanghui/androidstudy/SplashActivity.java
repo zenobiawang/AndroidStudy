@@ -3,6 +3,7 @@ package com.example.wanghui.androidstudy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -95,6 +96,7 @@ public class SplashActivity extends FragmentActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btn_changeSystemUI:
+                    Log.d("SplashActivity", v.getParent().toString());
                     goChangeSystemUI();
                     break;
                 case R.id.btn_changeScaleUI:

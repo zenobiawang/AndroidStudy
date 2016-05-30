@@ -4,8 +4,10 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,22 +24,27 @@ public class ExpandableLayout extends LinearLayout {
     private View mExpandView;
     private int mChildrenCount;
     private int mViewGonePosition;
+    private Context mContext;
 
     public ExpandableLayout(Context context) {
         super(context);
+        mContext = context;
     }
 
     public ExpandableLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
     }
 
     public ExpandableLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ExpandableLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        mContext = context;
     }
 
 
@@ -126,6 +133,9 @@ public class ExpandableLayout extends LinearLayout {
                 if (mIsExpanded){
                     setChildrenGone(mViewGonePosition);
                     mIsExpanded = false;
+                    TextView textView = new TextView(mContext);
+                    addView(textView);
+                    Log.d("ExpandableLayout", textView.getParent().toString());
                     expandChangeListener.onClose(mExpandView);
                 }else {
                     recoverChildren(mViewGonePosition);
