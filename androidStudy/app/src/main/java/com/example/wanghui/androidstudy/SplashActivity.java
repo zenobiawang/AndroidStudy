@@ -14,6 +14,7 @@ import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
 import com.example.wanghui.androidstudy.keep.KeepActivity;
+import com.example.wanghui.androidstudy.spannable.SpannableActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
@@ -34,6 +35,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonMediaAudio;
     private Button mButtonHandlder;
     private Button mButtonExpand;
+    private Button mButtonSpanableString;
     private SplashClickListener mSplashClickListener;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -83,6 +85,8 @@ public class SplashActivity extends FragmentActivity {
         mButtonExpand = (Button) findViewById(R.id.btn_Expandable);
         setClickListener(mButtonExpand);
 
+        mButtonSpanableString = (Button) findViewById(R.id.btn_spanable);
+        setClickListener(mButtonSpanableString);
     }
 
     private void setClickListener(View view) {
@@ -125,6 +129,9 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_Expandable:
                     goExpandActivity();
+                    break;
+                case R.id.btn_spanable:
+                    goSpanableActivity();
                     break;
             }
         }
@@ -187,6 +194,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goExpandActivity(){
         Intent intent = new Intent(this, ExpandableTestActivity.class);
+        startActivity(intent);
+    }
+
+    private void goSpanableActivity(){
+        Intent intent = new Intent(this, SpannableActivity.class);
         startActivity(intent);
     }
 }

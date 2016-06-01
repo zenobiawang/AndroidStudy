@@ -66,6 +66,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="展开收起"/>
+        <Button
+            android:id="@+id/btn_view_pool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="缓存池"/>
+        <Button
+            android:id="@+id/btn_spanable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SpanableStringBuilder"/>
 
 
 
