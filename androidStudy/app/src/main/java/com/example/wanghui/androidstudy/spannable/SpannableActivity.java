@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.CharacterStyle;
+import android.text.style.ImageSpan;
 import android.text.style.UnderlineSpan;
 import android.widget.TextView;
 
@@ -30,8 +31,8 @@ public class SpannableActivity extends FragmentActivity {
     private SpannableStringBuilder getContent(){
         String content = "哈哈哈哈哈哈哈哈哈哈";
         SpannableStringBuilder builder = new SpannableStringBuilder(content);
-        CharacterStyle span = new UnderlineSpan();
-        builder.setSpan(span, 0, content.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        CharacterStyle span = new ImageSpan(this, R.mipmap.ic_launcher);
+        builder.setSpan(span, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
     }
 }
