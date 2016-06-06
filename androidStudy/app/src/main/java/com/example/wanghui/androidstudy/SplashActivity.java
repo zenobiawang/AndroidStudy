@@ -201,4 +201,22 @@ public class SplashActivity extends FragmentActivity {
         Intent intent = new Intent(this, SpannableActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("androidStudy", "wh----onRestart--");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("androidStudy", "wh----onPause--");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("androidStudy", "wh----onStop--");
+    }
 }
