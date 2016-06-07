@@ -2,9 +2,10 @@ package com.example.wanghui.androidstudy.keep;
 
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.GridView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.wanghui.androidstudy.R;
 
@@ -22,37 +23,69 @@ import java.util.Map;
  */
 public class KeepActivity extends FragmentActivity {
     private Map<String, DataEntity> mEntityMap = new HashMap<>();
+    private Button mButton;
+    private TextView mContent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_list);
-        for (int i = 0; i < 10; i ++){
-            DataEntity dataEntity = new DataEntity("hhh" + i, "value" + i);
-            mEntityMap.put(i + "", dataEntity);
-        }
-
+        setContentView(R.layout.activity_keep);
+        mButton = (Button) findViewById(R.id.btn_read);
+        mContent = (TextView) findViewById(R.id.tv_keep_content);
+        final DataEntity entity = new DataEntity("hhhh", "123");
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(mEntityMap);
+            FileOutputStream outputStream = new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(entity);
             objectOutputStream.flush();
             objectOutputStream.close();
-            fileOutputStream.close();
+            outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+//        for (int i = 0; i < 10; i ++){
+//            DataEntity dataEntity = new DataEntity("hhh" + i, "value" + i);
+//            mEntityMap.put(i + "", dataEntity);
+//        }
+//
+//        try {
+//            FileOutputStream fileOutputStream = new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//            objectOutputStream.writeObject(mEntityMap);
+//            objectOutputStream.flush();
+//            objectOutputStream.close();
+//            fileOutputStream.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-        try {
-            FileInputStream fileInputStream = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            mEntityMap.clear();
-            mEntityMap.putAll((Map<? extends String, ? extends DataEntity>) objectInputStream.readObject());
-            for (DataEntity dataEntity : mEntityMap.values()){
-                System.out.println(dataEntity.toString());
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder builder = new StringBuilder();
+                try {
+                    FileInputStream inputStream = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
+                    ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+                    DataEntity entity1 = (DataEntity) objectInputStream.readObject();
+                    mContent.setText(entity.name + "-" + entity.value);
+                    objectInputStream.close();
+                    inputStream.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                try {
+//                    FileInputStream fileInputStream = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "haha.txt"));
+//                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+//                    mEntityMap.clear();
+//                    mEntityMap.putAll((Map<? extends String, ? extends DataEntity>) objectInputStream.readObject());
+//                    for (DataEntity dataEntity : mEntityMap.values()){
+//                        builder.append(dataEntity.name + "-" + dataEntity.value + "\n");
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                mContent.setText(builder);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
     }
 }
