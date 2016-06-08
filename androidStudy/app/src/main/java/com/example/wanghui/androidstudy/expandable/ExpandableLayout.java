@@ -24,6 +24,7 @@ public class ExpandableLayout extends LinearLayout {
     private View mExpandView;
     private int mChildrenCount;
     private int mViewGonePosition;
+    private int mRealHeight;
     private Context mContext;
 
     public ExpandableLayout(Context context) {
@@ -67,6 +68,7 @@ public class ExpandableLayout extends LinearLayout {
                     if (totalHeight > mExpandHeight){
                         mViewGonePosition = i;
                         mShouldExpand = true;
+                        mRealHeight = totalHeight;
                         break;
                     }
                 }
