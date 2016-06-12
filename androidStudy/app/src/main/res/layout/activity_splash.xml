@@ -76,6 +76,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SpanableStringBuilder"/>
+        <Button
+            android:id="@+id/btn_ipc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进程间通信"/>
 
 
 

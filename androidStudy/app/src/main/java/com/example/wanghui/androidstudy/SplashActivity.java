@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.wanghui.androidstudy.expandable.ExpandableTestActivity;
 import com.example.wanghui.androidstudy.handler.HandlerMsgActivity;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
+import com.example.wanghui.androidstudy.ipc.MessengerActivity;
 import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
@@ -18,8 +19,6 @@ import com.example.wanghui.androidstudy.spannable.SpannableActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by wanghui on 2016/4/5.
@@ -36,12 +35,8 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonHandlder;
     private Button mButtonExpand;
     private Button mButtonSpanableString;
+    private Button mButtonIPC;
     private SplashClickListener mSplashClickListener;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +44,6 @@ public class SplashActivity extends FragmentActivity {
         setContentView(R.layout.activity_splash);
         mSplashClickListener = new SplashClickListener();
         initView();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initView() {
@@ -87,6 +79,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonSpanableString = (Button) findViewById(R.id.btn_spanable);
         setClickListener(mButtonSpanableString);
+
+        mButtonIPC = (Button) findViewById(R.id.btn_ipc);
+        setClickListener(mButtonIPC);
     }
 
     private void setClickListener(View view) {
@@ -132,6 +127,9 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_spanable:
                     goSpanableActivity();
+                    break;
+                case R.id.btn_ipc:
+                    goMessengerActivity();
                     break;
             }
         }
@@ -199,6 +197,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goSpanableActivity(){
         Intent intent = new Intent(this, SpannableActivity.class);
+        startActivity(intent);
+    }
+
+    private void goMessengerActivity(){
+        Intent intent = new Intent(this, MessengerActivity.class);
         startActivity(intent);
     }
 
