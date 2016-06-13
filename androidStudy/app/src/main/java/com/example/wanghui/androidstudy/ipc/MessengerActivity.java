@@ -58,4 +58,10 @@ public class MessengerActivity extends Activity {
 
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        unbindService(mServiceConnection);
+        super.onDestroy();
+    }
 }

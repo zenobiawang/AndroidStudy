@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.wanghui.androidstudy.expandable.ExpandableTestActivity;
 import com.example.wanghui.androidstudy.handler.HandlerMsgActivity;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
+import com.example.wanghui.androidstudy.ipc.IPCActivity;
 import com.example.wanghui.androidstudy.ipc.MessengerActivity;
 import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
@@ -129,7 +130,7 @@ public class SplashActivity extends FragmentActivity {
                     goSpanableActivity();
                     break;
                 case R.id.btn_ipc:
-                    goMessengerActivity();
+                    goIPCActivity();
                     break;
             }
         }
@@ -200,8 +201,8 @@ public class SplashActivity extends FragmentActivity {
         startActivity(intent);
     }
 
-    private void goMessengerActivity(){
-        Intent intent = new Intent(this, MessengerActivity.class);
+    private void goIPCActivity(){
+        Intent intent = new Intent(this, IPCActivity.class);
         startActivity(intent);
     }
 

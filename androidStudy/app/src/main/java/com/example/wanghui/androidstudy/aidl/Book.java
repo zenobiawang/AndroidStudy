@@ -9,6 +9,12 @@ import android.os.Parcelable;
 public class Book implements Parcelable {
     public String bookId;
     public String bookName;
+
+    public Book(String bookName, String bookId) {
+        this.bookName = bookName;
+        this.bookId = bookId;
+    }
+
     protected Book(Parcel in) {
         bookId = in.readString();
         bookName = in.readString();
