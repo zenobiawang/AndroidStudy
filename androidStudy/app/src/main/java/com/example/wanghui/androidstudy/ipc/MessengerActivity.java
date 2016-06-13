@@ -6,16 +6,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.util.Log;
 
 /**
  * Created by wanghui on 2016/6/12.
  */
 public class MessengerActivity extends Activity {
     private Messenger mService;
+    private static class MessengerHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1:
+                    Bundle bundle = msg.getData();
+                    Log.d("wh", bundle.getString("1"));
+            }
+        }
+    }
+    private Messenger mMessenger = new Messenger(new MessengerHandler());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +45,7 @@ public class MessengerActivity extends Activity {
             Bundle data = new Bundle();
             data.putString("1", "it is from activity");
             message.setData(data);
+            message.replyTo = new Messenger(new MessengerHandler());
             try {
                 mService.send(message);
             } catch (RemoteException e) {
