@@ -17,6 +17,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="aidl"/>
+    <Button
+        android:id="@+id/btn_socket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="socket"/>
     </LinearLayout>
 
 </ScrollView>

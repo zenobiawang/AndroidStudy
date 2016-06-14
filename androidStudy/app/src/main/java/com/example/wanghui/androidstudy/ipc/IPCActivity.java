@@ -20,6 +20,7 @@ public class IPCActivity extends Activity {
         setContentView(R.layout.activity_ipc);
         initView(R.id.btn_messenger);
         initView(R.id.btn_aidl);
+        initView(R.id.btn_socket);
     }
 
     private void initView(int id) {
@@ -38,6 +39,9 @@ public class IPCActivity extends Activity {
                 case R.id.btn_aidl:
                     goBookManagerActivity();
                     break;
+                case R.id.btn_socket:
+                    goTcpClientActivity();
+                    break;
             }
         }
     }
@@ -46,8 +50,14 @@ public class IPCActivity extends Activity {
         Intent intent = new Intent(this, MessengerActivity.class);
         startActivity(intent);
     }
+
     private void goBookManagerActivity(){
         Intent intent = new Intent(this, BookManagerActivity.class);
+        startActivity(intent);
+    }
+
+    private void goTcpClientActivity(){
+        Intent intent = new Intent(this, TcpClientActivity.class);
         startActivity(intent);
     }
 }

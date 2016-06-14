@@ -50,7 +50,7 @@ public class TcpServerService extends Service {
         public void run() {
             ServerSocket serverSocket = null;
             try {
-                serverSocket = new ServerSocket(8688);
+                serverSocket = new ServerSocket(8345);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -87,7 +87,7 @@ public class TcpServerService extends Service {
             }
             int i = new Random().nextInt(mDefaultMessage.length);
             String reply = mDefaultMessage[i];
-            out.print(reply);
+            out.println(reply);
         }
         System.out.print("client quit.");
         out.close();
