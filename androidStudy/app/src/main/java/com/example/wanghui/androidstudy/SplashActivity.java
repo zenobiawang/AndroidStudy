@@ -2,6 +2,7 @@ package com.example.wanghui.androidstudy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -86,6 +87,11 @@ public class SplashActivity extends FragmentActivity {
     }
 
     private void setClickListener(View view) {
+        view.setOnClickListener(mSplashClickListener);
+    }
+
+    private void setClickListener(@IdRes int id){
+        View view = findViewById(id);
         view.setOnClickListener(mSplashClickListener);
     }
 
