@@ -21,6 +21,7 @@ import com.example.wanghui.androidstudy.spannable.SpannableActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
 import com.example.wanghui.androidstudy.ui.ScrollActivity;
+import com.example.wanghui.androidstudy.view.ViewActivity;
 
 /**
  * Created by wanghui on 2016/4/5.
@@ -84,6 +85,8 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonIPC = (Button) findViewById(R.id.btn_ipc);
         setClickListener(mButtonIPC);
+
+        setClickListener(R.id.btn_view);
     }
 
     private void setClickListener(View view) {
@@ -137,6 +140,9 @@ public class SplashActivity extends FragmentActivity {
                     break;
                 case R.id.btn_ipc:
                     goIPCActivity();
+                    break;
+                case R.id.btn_view:
+                    goViewActivity();
                     break;
             }
         }
@@ -209,6 +215,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goIPCActivity(){
         Intent intent = new Intent(this, IPCActivity.class);
+        startActivity(intent);
+    }
+
+    private void goViewActivity(){
+        Intent intent = new Intent(this, ViewActivity.class);
         startActivity(intent);
     }
 

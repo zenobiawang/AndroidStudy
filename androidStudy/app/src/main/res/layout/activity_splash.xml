@@ -81,6 +81,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="进程间通信"/>
+        <Button
+            android:id="@+id/btn_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View的事件体系"/>
+
 
 
 
