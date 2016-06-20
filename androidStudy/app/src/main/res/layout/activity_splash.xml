@@ -87,8 +87,5 @@
             android:layout_height="wrap_content"
             android:text="View的事件体系"/>
 
-
-
-
     </LinearLayout>
 </ScrollView>
