@@ -5,10 +5,13 @@
               android:layout_height="match_parent">
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:divider="@color/red"
+        android:showDividers="beginning">
         <TableRow>
             <TextView
-                android:text="nih"/>
+                android:text="nih"
+                android:layout_width="100dp"/>
             <TextView
                 android:text="nih"/>
             <TextView
