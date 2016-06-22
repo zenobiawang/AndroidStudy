@@ -19,6 +19,9 @@ public class ViewActivity extends AbsSplashActivity {
                 case R.id.btn_scrollTest:
                     goScrollTestActivity();
                     break;
+                case R.id.btn_keep_moving:
+                    goScrollTestActivity();
+                    break;
             }
         }
     };
@@ -36,10 +39,16 @@ public class ViewActivity extends AbsSplashActivity {
     @Override
     protected void init() {
         initListener(R.id.btn_scrollTest);
+        initListener(R.id.btn_keep_moving);
     }
 
     private void goScrollTestActivity(){
         Intent intent = new Intent(this, ScrollTestActivity.class);
+        startActivity(intent);
+    }
+
+    private void goKeepMovingActivity(){
+        Intent intent = new Intent(this, KeepMovingActivity.class);
         startActivity(intent);
     }
 
