@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Messenger;
 import android.widget.TextView;
 
 import com.example.wanghui.androidstudy.R;
@@ -26,5 +27,38 @@ public class KeepMovingActivity extends Activity {
         setContentView(R.layout.downing_view);
         mTvMoving = (TextView) findViewById(R.id.tv_moving);
         mTvRecycleMoving = (TextView) findViewById(R.id.tv_recycle_moving);
+
+        startMoving();
+    }
+
+    private void startMoving(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try{
+                        Thread.sleep(5000);
+                    }catch (InterruptedException e){
+
+                    }
+                    Message message = mHandler.obtainMessage(1);
+                    mHandler.sendMessage(message);
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try{
+                        Thread.sleep(1000);
+                    }catch (InterruptedException e){
+
+                    }
+                    mHandler.sendEmptyMessage(2);
+                }
+            }
+        }).start();
     }
 }
