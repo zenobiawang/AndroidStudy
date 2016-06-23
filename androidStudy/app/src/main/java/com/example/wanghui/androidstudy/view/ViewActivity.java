@@ -20,7 +20,7 @@ public class ViewActivity extends AbsSplashActivity {
                     goScrollTestActivity();
                     break;
                 case R.id.btn_keep_moving:
-                    goScrollTestActivity();
+                    goKeepMovingActivity();
                     break;
             }
         }
