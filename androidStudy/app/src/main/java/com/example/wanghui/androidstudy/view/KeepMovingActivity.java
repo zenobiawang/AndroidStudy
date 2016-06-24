@@ -30,26 +30,27 @@ public class KeepMovingActivity extends Activity {
             switch (msg.what){
                 case 1:
                     width += 100;
-                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, RelativeLayout.LayoutParams.MATCH_PARENT);
+                    ViewGroup.LayoutParams layoutParams = mTvMoving.getLayoutParams();
+                    layoutParams.width = width;
                     mTvMoving.setLayoutParams(layoutParams);
-                    Log.d("wh", "mTvMoving--" + mTvMoving.getMeasuredWidth());
+                    Log.d("wh", "mTvMoving--" + mTvMoving.getMeasuredWidth() + "--width--" + width);
                     break;
                 case 2:
                     recycleWidth += 10;
-                    if (recycleWidth > mTvRecycleMoving.getMeasuredWidth()){
+                    if (recycleWidth > mTvMoving.getMeasuredWidth()){
                         recycleWidth = 0;
                         isOver = true;
                     }
-                    RelativeLayout.LayoutParams recycleLayoutParams;
+                    ViewGroup.LayoutParams recycleLayoutParams = mTvRecycleMoving.getLayoutParams();
                     if (isOver){
-                        recycleLayoutParams = new RelativeLayout.LayoutParams(mTvRecycleMoving.getMeasuredWidth(), RelativeLayout.LayoutParams.MATCH_PARENT);
+                        recycleLayoutParams.width = mTvMoving.getMeasuredWidth();
                         isOver = false;
                     }else {
-                        recycleLayoutParams = new RelativeLayout.LayoutParams(width + 10, RelativeLayout.LayoutParams.MATCH_PARENT);
+                        recycleLayoutParams.width = recycleWidth;
                     }
-
                     mTvMoving.setLayoutParams(recycleLayoutParams);
-                    Log.d("wh", "mRecycleMoving--" + mTvRecycleMoving.getMeasuredWidth());
+                    Log.d("wh", "mRecycleMoving--" + mTvRecycleMoving.getMeasuredWidth() + "--recycleWidth--" + recycleWidth);
+
                     break;
             }
 
