@@ -17,6 +17,7 @@ import com.example.wanghui.androidstudy.media.AudioCaptureActivity;
 import com.example.wanghui.androidstudy.media.DionisPlayerActivity;
 import com.example.wanghui.androidstudy.media.VideoCaptureActivity;
 import com.example.wanghui.androidstudy.keep.KeepActivity;
+import com.example.wanghui.androidstudy.remoteviews.RemoteViewsUsage;
 import com.example.wanghui.androidstudy.spannable.SpannableActivity;
 import com.example.wanghui.androidstudy.testrxjava.TestRxJavaActivity;
 import com.example.wanghui.androidstudy.ui.ChangeSystemUIActivity;
@@ -47,6 +48,7 @@ public class SplashActivity extends FragmentActivity {
         setContentView(R.layout.activity_splash);
         mSplashClickListener = new SplashClickListener();
         initView();
+        setClickListener(R.id.btn_remote_view);
     }
 
     private void initView() {
@@ -144,6 +146,9 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_view:
                     goViewActivity();
                     break;
+                case R.id.btn_remote_view:
+                    goRemoteViewsActivity();
+                    break;
             }
         }
     }
@@ -220,6 +225,11 @@ public class SplashActivity extends FragmentActivity {
 
     private void goViewActivity(){
         Intent intent = new Intent(this, ViewActivity.class);
+        startActivity(intent);
+    }
+
+    private void goRemoteViewsActivity(){
+        Intent intent = new Intent(this, RemoteViewsUsage.class);
         startActivity(intent);
     }
 
