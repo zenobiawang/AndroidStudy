@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.example.wanghui.androidstudy.R;
+import com.example.wanghui.androidstudy.utils.DensityUtils;
 
 import java.util.List;
 
@@ -79,16 +82,21 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
      */
     private Canvas temp;
     /**
-     * 相对于targetView的位置
+     * 相对于targetView的位置.在target的那个方向
      */
     private Direction direction;
+
+    /**
+     * 形状
+     */
+    private MyShape myShape;
     /**
      * targetView左上角坐标
      */
     private int[] location;
     private boolean onClickExit;
     private OnClickCallback onclickListener;
-    private RelativeLayout guideViewLayout;
+    private final RectF mFullingRect = new RectF();
 
     public void restoreState() {
         Log.v(TAG, "restoreState");
@@ -101,9 +109,9 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
         porterDuffXfermode = null;
         bitmap = null;
         needDraw = true;
-//        backgroundColor = Color.parseColor("#00000000");
+        //        backgroundColor = Color.parseColor("#00000000");
         temp = null;
-//        direction = null;
+        //        direction = null;
 
     }
 
@@ -141,6 +149,10 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
         this.direction = direction;
     }
 
+    public void setShape(MyShape shape) {
+        this.myShape = shape;
+    }
+
     public void setCustomGuideView(View customGuideView) {
         this.customGuideView = customGuideView;
         if (!first) {
@@ -158,9 +170,9 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
 
     public void setTargetView(View targetView) {
         this.targetView = targetView;
-//        restoreState();
+        //        restoreState();
         if (!first) {
-//            guideViewLayout.removeAllViews();
+            //            guideViewLayout.removeAllViews();
         }
     }
 
@@ -173,9 +185,26 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
         }
     }
 
+    private ViewGroup mFullingView;
+    public void where(ViewGroup viewGroup){
+        mFullingView = viewGroup;
+    }
+
+    private Rect getViewAbsRect(View view, int parentX, int parentY) {
+        int[] loc = new int[2];
+        view.getLocationInWindow(loc);
+        Rect rect = new Rect();
+        rect.set(loc[0], loc[1], loc[0] + view.getMeasuredWidth(), loc[1] + view.getMeasuredHeight());
+//        rect.offset(-parentX, -parentY);
+        return rect;
+    }
+
     private boolean hasShown() {
-        if (targetView == null) return true;
-        return mContent.getSharedPreferences(TAG, Context.MODE_PRIVATE).getBoolean(generateUniqId(targetView), false);
+        if (targetView == null)
+            return true;
+//        return mContent.getSharedPreferences(TAG, Context.MODE_PRIVATE).getBoolean(generateUniqId(targetView), false);
+        else
+            return false;
     }
 
     private String generateUniqId(View v) {
@@ -202,7 +231,8 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
 
     public void show() {
         Log.v(TAG, "show");
-        if (hasShown()) return;
+        if (hasShown())
+            return;
 
         if (targetView != null) {
             targetView.getViewTreeObserver().addOnGlobalLayoutListener(this);
@@ -222,9 +252,9 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
         Log.v(TAG, "createGuideView");
 
         // 添加到蒙层
-//        if (guideViewLayout == null) {
-//            guideViewLayout = new RelativeLayout(mContent);
-//        }
+        //        if (guideViewLayout == null) {
+        //            guideViewLayout = new RelativeLayout(mContent);
+        //        }
 
         // Tips布局参数
         LayoutParams guideViewParams;
@@ -233,7 +263,7 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
 
         if (customGuideView != null) {
 
-//            LayoutParams guideViewParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            //            LayoutParams guideViewParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             if (direction != null) {
                 int width = this.getWidth();
                 int height = this.getHeight();
@@ -244,7 +274,7 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
                 int bottom = center[1] + radius;
                 switch (direction) {
                     case SELF:
-                        guideViewParams.setMargins(left, top, width - right, height - bottom );  //引导内容在目标上面,目前没有偏移量的功能
+                        guideViewParams.setMargins(left + offsetX, top + offsetY, width - right - offsetX, height - bottom - offsetY);  //引导内容在目标上面,目前没有偏移量的功能
                         break;
                     case TOP:
                         this.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
@@ -282,7 +312,7 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
                 guideViewParams.setMargins(offsetX, offsetY, -offsetX, -offsetY);
             }
 
-//            guideViewLayout.addView(customGuideView);
+            //            guideViewLayout.addView(customGuideView);
 
             this.addView(customGuideView, guideViewParams);
         }
@@ -319,16 +349,19 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
     }
 
     boolean needDraw = true;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.v(TAG, "onDraw");
 
-        if (!isMeasured) return;
+        if (!isMeasured)
+            return;
 
-        if (targetView == null) return;
+        if (targetView == null)
+            return;
 
-//        if (!needDraw) return;
+        //        if (!needDraw) return;
 
         drawBackground(canvas);
 
@@ -349,14 +382,46 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
             bgPaint.setColor(getResources().getColor(R.color.shadow));
 
         // 绘制屏幕背景
-        temp.drawRect(0, 0, temp.getWidth(), temp.getHeight(), bgPaint);
+//        temp.drawRect(0, 0, temp.getWidth(), temp.getHeight(), bgPaint);
+        if ((mFullingRect.top == 0 && mFullingRect.bottom == 0) || (mFullingRect.left == 0 && mFullingRect.right == 0)){
+            temp.drawRect(0, 0, temp.getWidth(), temp.getHeight(), bgPaint);
+        }else {
+            temp.drawRect(mFullingRect, bgPaint);
+        }
 
         // targetView 的透明圆形画笔
-        if (mCirclePaint == null) mCirclePaint = new Paint();
+        if (mCirclePaint == null)
+            mCirclePaint = new Paint();
         porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);// 或者CLEAR
         mCirclePaint.setXfermode(porterDuffXfermode);
         mCirclePaint.setAntiAlias(true);
-        temp.drawCircle(center[0], center[1], radius, mCirclePaint);
+
+        if (myShape != null) {
+            RectF oval = new RectF();
+            switch (myShape) {
+                case CIRCULAR://圆形
+                    temp.drawCircle(center[0], center[1], radius, mCirclePaint);//绘制圆形
+                    break;
+                case ELLIPSE://椭圆
+                    //RectF对象
+                    oval.left = center[0] - 150;                              //左边
+                    oval.top = center[1] - 50;                                   //上边
+                    oval.right = center[0] + 150;                             //右边
+                    oval.bottom = center[1] + 50;                                //下边
+                    temp.drawOval(oval, mCirclePaint);                   //绘制椭圆
+                    break;
+                case RECTANGULAR://圆角矩形
+                    //RectF对象
+                    oval.left = center[0] - 150;                              //左边
+                    oval.top = center[1] - 50;                                   //上边
+                    oval.right = center[0] + 150;                             //右边
+                    oval.bottom = center[1] + 50;                                //下边
+                    temp.drawRoundRect(oval, radius, radius, mCirclePaint);                   //绘制圆角矩形
+                    break;
+            }
+        } else {
+            temp.drawCircle(center[0], center[1], radius, mCirclePaint);//绘制圆形
+        }
 
         // 绘制到屏幕
         canvas.drawBitmap(bitmap, 0, 0, bgPaint);
@@ -408,6 +473,10 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
         if (radius == 0) {
             radius = getTargetViewRadius();
         }
+        if (mFullingView != null){
+            mFullingRect.set(getViewAbsRect(mFullingView, DensityUtils.getScreenWidth((Activity) mContent)
+                    , DensityUtils.getScreenHeight((Activity) mContent)));
+        }
         // 添加GuideView
         createGuideView();
     }
@@ -419,6 +488,13 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
         LEFT, TOP, RIGHT, BOTTOM,
         LEFT_TOP, LEFT_BOTTOM,
         RIGHT_TOP, RIGHT_BOTTOM,SELF
+    }
+
+    /**
+     * 定义目标控件的形状，共3种。圆形，椭圆，带圆角的矩形（可以设置圆角大小），不设置则默认是圆形
+     */
+    enum MyShape {
+        CIRCULAR, ELLIPSE, RECTANGULAR
     }
 
     /**
@@ -445,58 +521,68 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
             return instance;
         }
 
-        public  Builder setTargetView(View target) {
+        public Builder setTargetView(View target) {
             guiderView.setTargetView(target);
             return instance;
         }
 
-        public  Builder setBgColor(int color) {
+        public Builder setBgColor(int color) {
             guiderView.setBgColor(color);
             return instance;
         }
 
-        public  Builder setDirction(Direction dir) {
+        public Builder setDirction(Direction dir) {
             guiderView.setDirection(dir);
             return instance;
         }
 
-        public  Builder setOffset(int x, int y) {
+        public Builder setShape(MyShape shape) {
+            guiderView.setShape(shape);
+            return instance;
+        }
+
+        public Builder setOffset(int x, int y) {
             guiderView.setOffsetX(x);
             guiderView.setOffsetY(y);
             return instance;
         }
 
-        public  Builder setRadius(int radius) {
+        public Builder setRadius(int radius) {
             guiderView.setRadius(radius);
             return instance;
         }
 
-        public  Builder setCustomGuideView(View view) {
+        public Builder setCustomGuideView(View view) {
             guiderView.setCustomGuideView(view);
             return instance;
         }
 
-        public  Builder setCenter(int X, int Y) {
+        public Builder setCenter(int X, int Y) {
             guiderView.setCenter(new int[]{X, Y});
             return instance;
         }
 
-        public  Builder showOnce() {
+        public Builder showOnce() {
             guiderView.showOnce();
             return instance;
         }
 
-        public  GuideView build() {
+        public Builder where(RelativeLayout relativeLayout){
+            guiderView.where(relativeLayout);
+            return instance;
+        }
+
+        public GuideView build() {
             guiderView.setClickInfo();
             return guiderView;
         }
 
-        public  Builder setOnclickExit(boolean onclickExit) {
+        public Builder setOnclickExit(boolean onclickExit) {
             guiderView.setOnClickExit(onclickExit);
             return instance;
         }
 
-        public  Builder setOnclickListener(final OnClickCallback callback) {
+        public Builder setOnclickListener(final OnClickCallback callback) {
             guiderView.setOnclickListener(callback);
             return instance;
         }
