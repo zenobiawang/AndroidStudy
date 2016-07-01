@@ -24,6 +24,7 @@ public class KeepMovingActivity extends Activity {
     private TextView mTvMoving;
     private TextView mTvRecycleMoving;
     private Button mBtnBegin;
+    private boolean isStop = false;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -74,11 +75,30 @@ public class KeepMovingActivity extends Activity {
 
     }
 
+    @Override
+    protected void onPause() {
+        setStop(true);
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    public synchronized boolean isStop() {
+        return isStop;
+    }
+
+    public synchronized void setStop(boolean stop) {
+        isStop = stop;
+    }
+
     private void startMoving(){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
+                while (!isStop()){
                     try{
                         Thread.sleep(1000);
                     }catch (InterruptedException e){
@@ -93,7 +113,7 @@ public class KeepMovingActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
+                while (!isStop()){
                     try{
                         Thread.sleep(5);
                     }catch (InterruptedException e){
