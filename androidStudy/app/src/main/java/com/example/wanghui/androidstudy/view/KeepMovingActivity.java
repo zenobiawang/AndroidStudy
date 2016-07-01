@@ -37,7 +37,7 @@ public class KeepMovingActivity extends Activity {
                     Log.d("wh", "mTvMoving--" + mTvMoving.getMeasuredWidth() + "--width--" + width);
                     break;
                 case 2:
-                    recycleWidth += 10;
+                    recycleWidth += 5;
                     if (recycleWidth > mTvMoving.getMeasuredWidth()){
                         recycleWidth = 0;
                         isOver = true;
@@ -80,7 +80,7 @@ public class KeepMovingActivity extends Activity {
             public void run() {
                 while (true){
                     try{
-                        Thread.sleep(5000);
+                        Thread.sleep(1000);
                     }catch (InterruptedException e){
 
                     }
@@ -95,7 +95,7 @@ public class KeepMovingActivity extends Activity {
             public void run() {
                 while (true){
                     try{
-                        Thread.sleep(1000);
+                        Thread.sleep(5);
                     }catch (InterruptedException e){
 
                     }
