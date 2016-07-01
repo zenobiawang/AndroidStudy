@@ -52,6 +52,14 @@
         <activity android:name=".view.ScrollTestActivity"/>
         <activity android:name=".view.KeepMovingActivity"/>
         <activity android:name=".remoteviews.RemoteViewsUsage"/>
+
+        <receiver android:name=".remoteviews.MyAppWidgetProvider">
+            <meta-data android:name="android.appwidget.AppWidgetProviderInfo"
+                       android:resource="@xml/appwidget_provider_info"/>
+            <intent-filter>
+
+            </intent-filter>
+        </receiver>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

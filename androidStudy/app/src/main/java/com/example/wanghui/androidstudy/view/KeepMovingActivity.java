@@ -33,6 +33,7 @@ public class KeepMovingActivity extends Activity {
                     ViewGroup.LayoutParams layoutParams = mTvMoving.getLayoutParams();
                     layoutParams.width = width;
                     mTvMoving.setLayoutParams(layoutParams);
+                    mTvMoving.requestLayout();
                     Log.d("wh", "mTvMoving--" + mTvMoving.getMeasuredWidth() + "--width--" + width);
                     break;
                 case 2:
@@ -48,7 +49,8 @@ public class KeepMovingActivity extends Activity {
                     }else {
                         recycleLayoutParams.width = recycleWidth;
                     }
-                    mTvMoving.setLayoutParams(recycleLayoutParams);
+                    mTvRecycleMoving.setLayoutParams(recycleLayoutParams);
+                    mTvRecycleMoving.requestLayout();
                     Log.d("wh", "mRecycleMoving--" + mTvRecycleMoving.getMeasuredWidth() + "--recycleWidth--" + recycleWidth);
 
                     break;
