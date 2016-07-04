@@ -1,6 +1,7 @@
 package com.example.wanghui.androidstudy.ui;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -27,5 +28,10 @@ public class MyTextView extends TextView
 
     public void setWidth(int width){
 
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
     }
 }
