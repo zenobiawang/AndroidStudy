@@ -22,7 +22,8 @@ import com.example.wanghui.androidstudy.utils.DensityUtils;
 import java.util.List;
 
 /**
- * Created by zhouweixian on 2016/1/23.
+ * Created by zhouweixian on 2016/1/23.fixed by wanghui
+ * 引导页
  */
 public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlobalLayoutListener {
     private final String TAG = getClass().getSimpleName();
