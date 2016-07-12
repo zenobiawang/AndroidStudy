@@ -52,6 +52,7 @@
         <activity android:name=".view.ScrollTestActivity"/>
         <activity android:name=".view.KeepMovingActivity"/>
         <activity android:name=".remoteviews.RemoteViewsUsage"/>
+        <activity android:name=".view.GradientViewTestActivity"/>
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->

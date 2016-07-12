@@ -22,9 +22,17 @@ public class ViewActivity extends AbsSplashActivity {
                 case R.id.btn_keep_moving:
                     goKeepMovingActivity();
                     break;
+                case R.id.btn_gradient_view:
+                    goGradientViewActivity();
+                    break;
             }
         }
     };
+
+    private void goGradientViewActivity() {
+        Intent intent = new Intent(this, GradientViewTestActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -40,6 +48,7 @@ public class ViewActivity extends AbsSplashActivity {
     protected void init() {
         initListener(R.id.btn_scrollTest);
         initListener(R.id.btn_keep_moving);
+        initListener(R.id.btn_gradient_view);
     }
 
     private void goScrollTestActivity(){

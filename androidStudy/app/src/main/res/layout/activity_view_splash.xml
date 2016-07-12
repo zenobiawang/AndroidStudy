@@ -16,6 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="downing"/>
+        <Button
+            android:id="@+id/btn_gradient_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="gradient"/>
     </LinearLayout>
 
 </ScrollView>
