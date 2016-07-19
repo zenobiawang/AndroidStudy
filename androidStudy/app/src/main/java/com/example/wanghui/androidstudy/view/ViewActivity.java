@@ -25,6 +25,9 @@ public class ViewActivity extends AbsSplashActivity {
                 case R.id.btn_gradient_view:
                     goGradientViewActivity();
                     break;
+                case R.id.btn_power_view:
+                    goPowerImageViewActivity();
+                    break;
             }
         }
     };
@@ -49,6 +52,7 @@ public class ViewActivity extends AbsSplashActivity {
         initListener(R.id.btn_scrollTest);
         initListener(R.id.btn_keep_moving);
         initListener(R.id.btn_gradient_view);
+        initListener(R.id.btn_power_view);
     }
 
     private void goScrollTestActivity(){
@@ -58,6 +62,11 @@ public class ViewActivity extends AbsSplashActivity {
 
     private void goKeepMovingActivity(){
         Intent intent = new Intent(this, KeepMovingActivity.class);
+        startActivity(intent);
+    }
+
+    private void goPowerImageViewActivity(){
+        Intent intent = new Intent(this, PowerImageViewTestActivity.class);
         startActivity(intent);
     }
 

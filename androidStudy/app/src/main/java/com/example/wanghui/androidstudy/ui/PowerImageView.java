@@ -1,4 +1,4 @@
-package com.example.wanghui.androidstudy.view;
+package com.example.wanghui.androidstudy.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
