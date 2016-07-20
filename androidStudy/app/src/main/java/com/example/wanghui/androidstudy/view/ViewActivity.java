@@ -28,6 +28,9 @@ public class ViewActivity extends AbsSplashActivity {
                 case R.id.btn_power_view:
                     goPowerImageViewActivity();
                     break;
+                case R.id.btn_textview_scale:
+                    goPowerImageViewActivity();
+                    break;
             }
         }
     };
@@ -53,6 +56,7 @@ public class ViewActivity extends AbsSplashActivity {
         initListener(R.id.btn_keep_moving);
         initListener(R.id.btn_gradient_view);
         initListener(R.id.btn_power_view);
+        initListener(R.id.btn_textview_scale);
     }
 
     private void goScrollTestActivity(){

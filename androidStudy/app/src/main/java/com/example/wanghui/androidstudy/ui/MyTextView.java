@@ -1,8 +1,10 @@
 package com.example.wanghui.androidstudy.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 /**
@@ -26,12 +28,17 @@ public class MyTextView extends TextView
         super(context, attrs);
     }
 
-    public void setWidth(int width){
-
-    }
-
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    public void setTextSize(int unit, float size) {
+        Context c = getContext();
+        Resources r;
+
+        if (c == null)
+            r = Resources.getSystem();
+        else
+            r = c.getResources();
+
+//        setRawTextSize(TypedValue.applyDimension(
+//                unit, size, r.getDisplayMetrics()));
     }
 }
