@@ -275,11 +275,11 @@ public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlob
                 int bottom = center[1] + radius;
                 switch (direction) {
                     case SELF:
-                        guideViewParams.setMargins(left + offsetX, top + offsetY, width - right - offsetX, height - bottom - offsetY);  //引导内容在目标上面,目前没有偏移量的功能
+                        guideViewParams.setMargins(left + offsetX, top + offsetY, width - right - offsetX, height - bottom - offsetY);  //引导内容在目标上面
                         break;
                     case TOP:
-                        this.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-                        guideViewParams.setMargins(offsetX, offsetY - height + top, -offsetX, height - top - offsetY);
+                        this.setGravity(Gravity.BOTTOM);
+                        guideViewParams.setMargins(left + offsetX, offsetY - height + top, -offsetX, height - top - offsetY);
                         break;
                     case LEFT:
                         this.setGravity(Gravity.RIGHT);
