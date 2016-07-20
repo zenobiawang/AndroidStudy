@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.example.wanghui.androidstudy"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:Android="http://schemas.android.com/apk/res-auto">
 
     <application
         android:allowBackup="true"
@@ -54,6 +55,8 @@
         <activity android:name=".remoteviews.RemoteViewsUsage"/>
         <activity android:name=".view.GradientViewTestActivity"/>
         <activity android:name=".view.PowerImageViewTestActivity"/>
+        <activity android:name=".view.TextSizeScaleActivity"
+            android:configChanges="fontScale"/>
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->

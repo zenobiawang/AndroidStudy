@@ -29,7 +29,7 @@ public class ViewActivity extends AbsSplashActivity {
                     goPowerImageViewActivity();
                     break;
                 case R.id.btn_textview_scale:
-                    goPowerImageViewActivity();
+                    goTextSizeScaleActivity();
                     break;
             }
         }
@@ -71,6 +71,11 @@ public class ViewActivity extends AbsSplashActivity {
 
     private void goPowerImageViewActivity(){
         Intent intent = new Intent(this, PowerImageViewTestActivity.class);
+        startActivity(intent);
+    }
+
+    private void goTextSizeScaleActivity(){
+        Intent intent = new Intent(this, TextSizeScaleActivity.class);
         startActivity(intent);
     }
 

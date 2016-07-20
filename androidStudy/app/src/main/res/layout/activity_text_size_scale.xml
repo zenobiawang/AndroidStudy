@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="作为一种著名的宠物猫，暹罗猫能够较好适应主人当地的气候，暹暹罗猫暹罗猫
+        罗猫性格刚烈好动，机智灵活，好奇心特强，善解人意。暹罗猫喜欢与人为伴，可用皮带拴着散步。
+        它需要主人的不断爱抚和关心，对主人忠心耿耿、感情深厚，如果强制与主人分开，则可能会抑郁
+        而死。暹罗猫还十分聪明，能很快学会翻筋斗叼回抛物等技巧。暹罗猫的叫声独特或像小孩的啼哭声，
+        而且声音很大。"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/btn_zoom_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="放大"
+        android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/btn_zoom_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="缩小"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/btn_zoom_in"/>
+
+</RelativeLayout>
