@@ -54,9 +54,10 @@
         <activity android:name=".view.KeepMovingActivity"/>
         <activity android:name=".remoteviews.RemoteViewsUsage"/>
         <activity android:name=".view.GradientViewTestActivity"/>
-        <activity android:name=".view.PowerImageViewTestActivity"/>
+        <activity android:name=".view.PowerImageViewTestActivity"
+                  android:hardwareAccelerated="false"/>
         <activity android:name=".view.TextSizeScaleActivity"
-            android:configChanges="fontScale"/>
+            />
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->

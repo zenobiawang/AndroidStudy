@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.wanghui.androidstudy.R;
@@ -23,11 +24,13 @@ public class TextSizeScaleActivity extends Activity {
         mBtnZoomIn = (Button) findViewById(R.id.btn_zoom_in);
         mBtnZoomOut = (Button) findViewById(R.id.btn_zoom_out);
         setListener();
-        Resources res = getResources();
-        Configuration config = res.getConfiguration();
-        config.fontScale = 3.0f;//缩放比例，3.0表示放大3倍
-        DisplayMetrics metrics = res.getDisplayMetrics();
-        res.updateConfiguration(config, metrics);
+    }
+
+    private void refreshView(){
+        setContentView(R.layout.activity_text_size_scale);
+        mBtnZoomIn = (Button) findViewById(R.id.btn_zoom_in);
+        mBtnZoomOut = (Button) findViewById(R.id.btn_zoom_out);
+        setListener();
     }
 
     private void setListener() {
@@ -41,6 +44,7 @@ public class TextSizeScaleActivity extends Activity {
                 config.fontScale = 0.5f;
                 DisplayMetrics metrics = res.getDisplayMetrics();
                 res.updateConfiguration(config, metrics);
+                refreshView();
             }
         });
 
@@ -51,6 +55,7 @@ public class TextSizeScaleActivity extends Activity {
                 config.fontScale = 2.0f;//缩放比例，3.0表示放大3倍
                 DisplayMetrics metrics = res.getDisplayMetrics();
                 res.updateConfiguration(config, metrics);
+                refreshView();
             }
         });
     }
