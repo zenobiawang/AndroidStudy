@@ -7,8 +7,12 @@
     <com.example.wanghui.androidstudy.ui.PowerImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:auto_play="false"
+        app:auto_play="true"
         android:src="@drawable/power_iamge_view_test"
         android:layout_gravity="center"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_start"/>
 
 </LinearLayout>
