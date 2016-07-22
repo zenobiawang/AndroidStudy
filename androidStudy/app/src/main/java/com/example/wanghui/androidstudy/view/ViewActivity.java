@@ -1,11 +1,9 @@
 package com.example.wanghui.androidstudy.view;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
-import com.example.wanghui.androidstudy.AbsSplashActivity;
+import com.example.wanghui.androidstudy.base.AbsSplashActivity;
 import com.example.wanghui.androidstudy.R;
 
 /**

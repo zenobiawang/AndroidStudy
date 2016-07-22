@@ -1,4 +1,4 @@
-package com.example.wanghui.androidstudy;
+package com.example.wanghui.androidstudy.base;
 
 import android.app.Activity;
 import android.content.DialogInterface;
