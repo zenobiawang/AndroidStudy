@@ -5,10 +5,14 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.text.SpannableString;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.wanghui.androidstudy.aidl.Book;
 import com.example.wanghui.androidstudy.aidl.IBookManager;
