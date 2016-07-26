@@ -22,7 +22,7 @@ import com.example.wanghui.androidstudy.utils.DensityUtils;
 import java.util.List;
 
 /**
- * Created by zhouweixian on 2016/1/23.fixed by wanghui
+ * Created by zhouweixian on 2016/1/23.fixed by wanghui增加引导图在自己空处的功能
  * 引导页
  */
 public class GuideView extends RelativeLayout implements ViewTreeObserver.OnGlobalLayoutListener {
