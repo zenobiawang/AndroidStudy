@@ -58,6 +58,7 @@
                   android:hardwareAccelerated="false"/>
         <activity android:name=".view.TextSizeScaleActivity"
             />
+        <activity android:name=".animat.AnimationDemoAcivity"/>
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->
