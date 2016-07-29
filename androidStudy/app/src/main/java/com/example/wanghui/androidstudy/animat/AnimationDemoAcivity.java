@@ -39,6 +39,12 @@ public class AnimationDemoAcivity extends Activity {
         );
         set.setDuration(500)   //针对每个子动画
                 .start();
+
+        ObjectAnimator first = new ObjectAnimator();
+        ObjectAnimator second = new ObjectAnimator();
+        ObjectAnimator third = new ObjectAnimator();
+        set.play(first).with(second).after(third);
+
     }
 
     private void demo3(){
