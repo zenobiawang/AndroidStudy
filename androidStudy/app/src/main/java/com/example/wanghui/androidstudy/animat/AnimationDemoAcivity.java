@@ -32,19 +32,26 @@ public class AnimationDemoAcivity extends Activity {
     }
 
     private void demo2(){
-        AnimatorSet set = new AnimatorSet();
-        set.playSequentially(
+        AnimatorSet set1 = new AnimatorSet();
+        set1.playSequentially(
                 ObjectAnimator.ofFloat(mObject, "translationY", 0, 100),
                 ObjectAnimator.ofFloat(mObject, "translationY", 100, 0)
         );
-        set.setDuration(500)   //针对每个子动画
+        set1.setDuration(500)   //针对每个子动画
                 .start();
 
+        AnimatorSet set2 = new AnimatorSet();
         ObjectAnimator first = new ObjectAnimator();
+        first.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+            }
+        });
         ObjectAnimator second = new ObjectAnimator();
         ObjectAnimator third = new ObjectAnimator();
-        set.play(first).with(second).after(third);
-
+        set2.play(first).with(second).after(set1);
+        set2.start();
     }
 
     private void demo3(){

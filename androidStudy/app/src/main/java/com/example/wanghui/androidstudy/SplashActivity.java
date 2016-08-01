@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wanghui.androidstudy.animat.AnimationHome;
 import com.example.wanghui.androidstudy.expandable.ExpandableTestActivity;
 import com.example.wanghui.androidstudy.handler.HandlerMsgActivity;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
@@ -40,6 +41,7 @@ public class SplashActivity extends FragmentActivity {
     private Button mButtonExpand;
     private Button mButtonSpanableString;
     private Button mButtonIPC;
+    private Button mButtonAnimator;
     private SplashClickListener mSplashClickListener;
 
     @Override
@@ -87,6 +89,9 @@ public class SplashActivity extends FragmentActivity {
 
         mButtonIPC = (Button) findViewById(R.id.btn_ipc);
         setClickListener(mButtonIPC);
+
+        mButtonAnimator = (Button) findViewById(R.id.btn_animation);
+        setClickListener(mButtonAnimator);
 
         setClickListener(R.id.btn_view);
     }
@@ -149,8 +154,16 @@ public class SplashActivity extends FragmentActivity {
                 case R.id.btn_remote_view:
                     goRemoteViewsActivity();
                     break;
+                case R.id.btn_animation:
+                    goAnimationHome();
+                    break;
             }
         }
+    }
+
+    private void goAnimationHome() {
+        Intent intent = new Intent(this, AnimationHome.class);
+        startActivity(intent);
     }
 
     private void goMediaAudio() {

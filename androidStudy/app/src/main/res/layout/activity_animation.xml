@@ -7,5 +7,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="动画demo"/>
+    <Button
+        android:id="@+id/btn_animation_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="动画测试"/>
 
 </LinearLayout>

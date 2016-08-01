@@ -59,6 +59,8 @@
         <activity android:name=".view.TextSizeScaleActivity"
             />
         <activity android:name=".animat.AnimationDemoAcivity"/>
+        <activity android:name=".animat.AnimationTestActivity"/>
+        <activity android:name=".animat.AnimationHome"/>
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->

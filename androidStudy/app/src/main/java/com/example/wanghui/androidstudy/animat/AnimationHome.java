@@ -19,8 +19,16 @@ public class AnimationHome extends AbsSplashActivity{
                 case R.id.btn_animation_demo:
                     goAnimationDemo();
                     break;
+                case R.id.btn_animation_test:
+                    goAnimationTest();
+                    break;
             }
         }
+    }
+
+    private void goAnimationTest() {
+        Intent intent = new Intent(this, AnimationTestActivity.class);
+        startActivity(intent);
     }
 
     private void goAnimationDemo() {
@@ -41,5 +49,6 @@ public class AnimationHome extends AbsSplashActivity{
     @Override
     protected void init() {
         initListener(R.id.btn_animation_demo);
+        initListener(R.id.btn_animation_test);
     }
 }
