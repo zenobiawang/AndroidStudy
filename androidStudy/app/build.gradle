@@ -29,4 +29,5 @@ dependencies {
     //    compile 'com.android.databinding:dataBinder:1.0-rc0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+    compile 'com.android.support:design:23.4.0'
 }

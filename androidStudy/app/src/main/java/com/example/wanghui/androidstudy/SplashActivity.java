@@ -3,6 +3,7 @@ package com.example.wanghui.androidstudy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -113,7 +114,8 @@ public class SplashActivity extends FragmentActivity {
             switch (v.getId()) {
                 case R.id.btn_changeSystemUI:
                     Log.d("SplashActivity", v.getParent().toString());
-                    goChangeSystemUI();
+//                    goChangeSystemUI();
+                    showSnackBar();
                     break;
                 case R.id.btn_changeScaleUI:
                     goChangeScaleUI();
@@ -159,6 +161,15 @@ public class SplashActivity extends FragmentActivity {
                     break;
             }
         }
+    }
+
+    private void showSnackBar() {
+        Snackbar.make(mButtonAnimator, "被点击了", Snackbar.LENGTH_SHORT).setAction("撤销", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }).show();
     }
 
     private void goAnimationHome() {
