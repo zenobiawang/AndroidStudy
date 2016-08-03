@@ -29,9 +29,17 @@ public class ViewActivity extends AbsSplashActivity {
                 case R.id.btn_textview_scale:
                     goTextSizeScaleActivity();
                     break;
+                case R.id.btn_porterduff:
+                    goPorterduffDemoActivity();
+                    break;
             }
         }
     };
+
+    private void goPorterduffDemoActivity() {
+        Intent intent = new Intent(this, PorterduffDemoActivity.class);
+        startActivity(intent);
+    }
 
     private void goGradientViewActivity() {
         Intent intent = new Intent(this, GradientViewTestActivity.class);
@@ -55,6 +63,7 @@ public class ViewActivity extends AbsSplashActivity {
         initListener(R.id.btn_gradient_view);
         initListener(R.id.btn_power_view);
         initListener(R.id.btn_textview_scale);
+        initListener(R.id.btn_porterduff);
     }
 
     private void goScrollTestActivity(){

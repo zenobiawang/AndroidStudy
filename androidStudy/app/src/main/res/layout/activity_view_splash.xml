@@ -31,6 +31,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="文字缩放"/>
+        <Button
+            android:id="@+id/btn_porterduff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PorterDuff"/>
     </LinearLayout>
 
 </ScrollView>
