@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
@@ -56,7 +58,12 @@ public class GuideView extends View {
         Canvas tempCanvas = new Canvas();
         Paint tempPaint = new Paint();
         tempPaint.setColor(backgroundColor);
-        canvas.drawRect(0, 0, tempCanvas.getWidth(), tempCanvas .getHeight(), tempPaint);
-
+        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), tempPaint);
+        Paint ciclePaint = new Paint();
+        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
+        ciclePaint.setXfermode(porterDuffXfermode);
+        ciclePaint.setAntiAlias(true);
+        ciclePaint.setColor(Color.TRANSPARENT);
+        canvas.drawCircle(100, 100, 50, ciclePaint);
     }
 }
