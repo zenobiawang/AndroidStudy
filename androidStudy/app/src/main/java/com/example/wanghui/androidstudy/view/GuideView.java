@@ -11,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 
 /**
@@ -55,15 +56,27 @@ public class GuideView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 //        Canvas tempCanvas = new Canvas();
-        Canvas tempCanvas = new Canvas();
-        Paint tempPaint = new Paint();
-        tempPaint.setColor(backgroundColor);
-        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), tempPaint);
-        Paint ciclePaint = new Paint();
-        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
-        ciclePaint.setXfermode(porterDuffXfermode);
-        ciclePaint.setAntiAlias(true);
-        ciclePaint.setColor(Color.TRANSPARENT);
-        canvas.drawCircle(100, 100, 50, ciclePaint);
+//        Canvas tempCanvas = new Canvas();
+//        Paint tempPaint = new Paint();
+//        tempPaint.setColor(backgroundColor);
+//        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), tempPaint);
+//        Paint ciclePaint = new Paint();
+//        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
+//        ciclePaint.setXfermode(porterDuffXfermode);
+//        ciclePaint.setAntiAlias(true);
+//        ciclePaint.setColor(Color.TRANSPARENT);
+//        canvas.drawCircle(100, 100, 50, ciclePaint);
+        Bitmap bitmap = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas tempCanvas  = new Canvas(bitmap);
+        Paint backgroundPaint = new Paint();
+        backgroundPaint.setColor(backgroundColor);
+        tempCanvas.drawRect(0, 0, tempCanvas.getWidth(), tempCanvas.getHeight(), backgroundPaint);
+        Paint secPaint = new Paint();
+        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+        secPaint.setXfermode(porterDuffXfermode);
+        secPaint.setAntiAlias(true);
+        tempCanvas.drawCircle(200, 200, 100, secPaint);
+        canvas.drawBitmap(bitmap, 0, 0, backgroundPaint);
+        bitmap.recycle();
     }
 }
