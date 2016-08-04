@@ -16,6 +16,7 @@ import com.example.wanghui.androidstudy.R;
 
 /**
  * Created by wanghui on 2016/8/4.
+ * 火箭升空的动画
  */
 public class RocketLaunchAnimationActivity extends Activity {
     private ImageView mIvCloud1;
