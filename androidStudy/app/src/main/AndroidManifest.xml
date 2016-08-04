@@ -62,6 +62,7 @@
         <activity android:name=".animat.AnimationTestActivity"/>
         <activity android:name=".animat.AnimationHome"/>
         <activity android:name=".view.PorterduffDemoActivity"/>
+        <activity android:name=".animat.RocketLaunchAnimationActivity"/>
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->

@@ -8,11 +8,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewDebug;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by wanghui on 2016/8/3.
@@ -23,6 +25,7 @@ public class GuideView extends View {
     private int backgroundColor = Color.parseColor("#cc222222");
     private View mTarget;
     private float mRadius;
+    private Drawable mGuideDrawable;
 
     public GuideView(Context context) {
         super(context);
@@ -74,10 +77,11 @@ public class GuideView extends View {
         backgroundPaint.setColor(backgroundColor);
         tempCanvas.drawRect(0, 0, tempCanvas.getWidth(), tempCanvas.getHeight(), backgroundPaint);
         Paint secPaint = new Paint();
-        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.XOR);
         secPaint.setXfermode(porterDuffXfermode);
         secPaint.setAntiAlias(true);
         tempCanvas.drawCircle(200, 200, 100, secPaint);
+//        Bitmap bitmap1 = mGuideDrawable.
         canvas.drawBitmap(bitmap, 0, 0, backgroundPaint);
         bitmap.recycle();
     }

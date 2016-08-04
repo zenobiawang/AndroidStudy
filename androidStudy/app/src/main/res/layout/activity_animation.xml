@@ -12,5 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="动画测试"/>
+    <Button
+        android:id="@+id/btn_animation_rocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="火箭动画"/>
 
 </LinearLayout>

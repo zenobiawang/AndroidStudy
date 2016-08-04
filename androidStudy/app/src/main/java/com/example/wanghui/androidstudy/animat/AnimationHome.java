@@ -22,8 +22,16 @@ public class AnimationHome extends AbsSplashActivity{
                 case R.id.btn_animation_test:
                     goAnimationTest();
                     break;
+                case R.id.btn_animation_rocket:
+                    goAnimationRocket();
+                    break;
             }
         }
+    }
+
+    private void goAnimationRocket() {
+        Intent intent = new Intent(this, RocketLaunchAnimationActivity.class);
+        startActivity(intent);
     }
 
     private void goAnimationTest() {
@@ -50,5 +58,6 @@ public class AnimationHome extends AbsSplashActivity{
     protected void init() {
         initListener(R.id.btn_animation_demo);
         initListener(R.id.btn_animation_test);
+        initListener(R.id.btn_animation_rocket);
     }
 }
