@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.IntEvaluator;
 import android.animation.ObjectAnimator;
+import android.animation.PointFEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
@@ -77,6 +78,7 @@ public class AnimationDemoAcivity extends Activity {
     private void demo5(){
         ValueAnimator animator = ValueAnimator.ofInt(0, 100);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setEvaluator(new IntEvaluator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             private IntEvaluator evaluator = new IntEvaluator();
             @Override

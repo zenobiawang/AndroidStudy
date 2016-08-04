@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 public class GuideView extends View {
     private Context mContext;
     private int backgroundColor = Color.parseColor("#cc222222");
+    private View mTarget;
+    private float mRadius;
 
     public GuideView(Context context) {
         super(context);
