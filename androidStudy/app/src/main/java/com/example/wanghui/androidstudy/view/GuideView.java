@@ -80,7 +80,7 @@ public class GuideView extends View {
         PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.XOR);
         secPaint.setXfermode(porterDuffXfermode);
         secPaint.setAntiAlias(true);
-        tempCanvas.drawCircle(200, 200, 100, secPaint);
+        tempCanvas.drawCircle(mTarget.getX(), mTarget.getY(), 100, secPaint);
 //        Bitmap bitmap1 = mGuideDrawable.
         canvas.drawBitmap(bitmap, 0, 0, backgroundPaint);
         bitmap.recycle();
