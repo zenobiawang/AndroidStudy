@@ -32,9 +32,18 @@ public class ViewActivity extends AbsSplashActivity {
                 case R.id.btn_porterduff:
                     goPorterduffDemoActivity();
                     break;
+                case R.id.btn_test_config:
+                    goTestConfigChangeActivity();
+                    break;
             }
         }
     };
+
+    private void goTestConfigChangeActivity() {
+        Intent intent = new Intent(this, TestConfigChangeActivity.class);
+        intent.putExtra("id", 12345678);
+        startActivity(intent);
+    }
 
     private void goPorterduffDemoActivity() {
         Intent intent = new Intent(this, PorterduffDemoActivity.class);
@@ -64,6 +73,7 @@ public class ViewActivity extends AbsSplashActivity {
         initListener(R.id.btn_power_view);
         initListener(R.id.btn_textview_scale);
         initListener(R.id.btn_porterduff);
+        initListener(R.id.btn_test_config);
     }
 
     private void goScrollTestActivity(){
