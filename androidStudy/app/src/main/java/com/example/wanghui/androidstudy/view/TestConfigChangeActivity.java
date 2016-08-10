@@ -1,6 +1,7 @@
 package com.example.wanghui.androidstudy.view;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,5 +16,11 @@ public class TestConfigChangeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         Log.d("androidStudy", "wh----onCreate");
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d("androidStudy", "wh-----newConfig--" + newConfig);
     }
 }
