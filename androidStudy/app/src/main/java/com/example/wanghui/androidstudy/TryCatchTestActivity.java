@@ -19,7 +19,7 @@ public class TryCatchTestActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mHandler.obtainMessage(1, "haha");
+        mHandler.sendEmptyMessage(1);
         try {
             throw new RuntimeException();
         }
