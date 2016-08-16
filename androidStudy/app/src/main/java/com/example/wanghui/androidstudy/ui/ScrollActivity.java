@@ -19,7 +19,7 @@ public class ScrollActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Thread(){
+        new Thread("thread1"){
             @Override
             public void run() {
                 local1.set("thread1");
@@ -27,7 +27,7 @@ public class ScrollActivity extends FragmentActivity {
                 Log.d("----thread1----" + local2.get());
             }
         }.start();
-        new Thread(){
+        new Thread("thread2"){
             @Override
             public void run() {
                 local2.set("thread2");
