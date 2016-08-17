@@ -3,6 +3,7 @@ package com.example.wanghui.androidstudy;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -20,6 +21,8 @@ public class TryCatchTestActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHandler.sendEmptyMessage(1);
+        Looper.prepare();
+        Looper.loop();
         try {
             throw new RuntimeException();
         }
