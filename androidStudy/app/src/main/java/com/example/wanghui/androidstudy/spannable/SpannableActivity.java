@@ -1,6 +1,7 @@
 package com.example.wanghui.androidstudy.spannable;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
