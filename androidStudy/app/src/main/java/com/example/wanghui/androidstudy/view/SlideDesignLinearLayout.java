@@ -202,8 +202,8 @@ public class SlideDesignLinearLayout extends LinearLayout implements NestedScrol
     protected void onFinishInflate()
     {
         super.onFinishInflate();
-        mTop = findViewById(R.id.id_stickynavlayout_topview);
-        mNav = findViewById(R.id.id_stickynavlayout_indicator);
+//        mTop = findViewById(R.id.id_stickynavlayout_topview);
+//        mNav = findViewById(R.id.id_stickynavlayout_indicator);
         View view = findViewById(R.id.id_stickynavlayout_viewpager);
         if (!(view instanceof ViewPager))
         {
