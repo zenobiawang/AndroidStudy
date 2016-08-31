@@ -204,13 +204,13 @@ public class SlideDesignLinearLayout extends LinearLayout implements NestedScrol
         super.onFinishInflate();
 //        mTop = findViewById(R.id.id_stickynavlayout_topview);
 //        mNav = findViewById(R.id.id_stickynavlayout_indicator);
-        View view = findViewById(R.id.id_stickynavlayout_viewpager);
-        if (!(view instanceof ViewPager))
-        {
-            throw new RuntimeException(
-                    "id_stickynavlayout_viewpager show used by ViewPager !");
-        }
-        mViewPager = (ViewPager) view;
+////        View view = findViewById(R.id.id_stickynavlayout_viewpager);
+//        if (!(view instanceof ViewPager))
+//        {
+//            throw new RuntimeException(
+//                    "id_stickynavlayout_viewpager show used by ViewPager !");
+//        }
+//        mViewPager = (ViewPager) view;
     }
 
     @Override
