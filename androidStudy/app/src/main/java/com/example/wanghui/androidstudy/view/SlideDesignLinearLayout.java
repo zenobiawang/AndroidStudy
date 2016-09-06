@@ -223,6 +223,7 @@ public class SlideDesignLinearLayout extends LinearLayout implements NestedScrol
         params.height = getMeasuredHeight() - mNav.getMeasuredHeight();
         setMeasuredDimension(getMeasuredWidth(), mTop.getMeasuredHeight() + mNav.getMeasuredHeight() + mViewPager.getMeasuredHeight());
 
+
     }
 
     @Override
