@@ -1,7 +1,9 @@
 package com.example.wanghui.androidstudy.interaction;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Matrix;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -31,6 +33,7 @@ public class RotateZoomImageView extends ImageView {
         init(context);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public RotateZoomImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);

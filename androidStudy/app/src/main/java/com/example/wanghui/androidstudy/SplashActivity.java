@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.example.wanghui.androidstudy.animat.AnimationHome;
 import com.example.wanghui.androidstudy.expandable.ExpandableTestActivity;
 import com.example.wanghui.androidstudy.handler.HandlerMsgActivity;
+import com.example.wanghui.androidstudy.interaction.InteractionSplash;
 import com.example.wanghui.androidstudy.interaction.MultiTouchActivity;
 import com.example.wanghui.androidstudy.ipc.IPCActivity;
 import com.example.wanghui.androidstudy.ipc.MessengerActivity;
@@ -200,7 +201,7 @@ public class SplashActivity extends FragmentActivity {
     }
 
     private void goMultiTouch() {
-        Intent intent = new Intent(this, MultiTouchActivity.class);
+        Intent intent = new Intent(this, InteractionSplash.class);
         startActivity(intent);
     }
 
