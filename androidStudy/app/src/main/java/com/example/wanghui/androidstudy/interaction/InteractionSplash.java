@@ -39,6 +39,7 @@ public class InteractionSplash extends AbsSplashActivity {
 
     @Override
     protected void init() {
-
+        initListener(R.id.btn_multi_touch);
+        initListener(R.id.btn_part_load);
     }
 }

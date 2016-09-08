@@ -10,5 +10,11 @@
         android:layout_height="wrap_content"
         android:text="多点触控放大图片"
         />
+    <Button
+        android:id="@+id/btn_part_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="局部加载"
+        />
 
 </LinearLayout>
