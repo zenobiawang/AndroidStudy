@@ -18,6 +18,7 @@ public class PartLoadView extends View {
 
     public PartLoadView(Context context) {
         super(context);
+        init(context);
     }
 
     public PartLoadView(Context context, AttributeSet attrs) {
@@ -33,6 +34,9 @@ public class PartLoadView extends View {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
+    private void init(Context context){
+
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
