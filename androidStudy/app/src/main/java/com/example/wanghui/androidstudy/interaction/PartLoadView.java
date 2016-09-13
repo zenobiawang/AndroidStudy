@@ -2,9 +2,11 @@ package com.example.wanghui.androidstudy.interaction;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,6 +22,9 @@ import java.io.InputStream;
 public class PartLoadView extends View {
     private BitmapRegionDecoder mDecoder;
     private Context mContext;
+    private BitmapFactory.Options mOptions;
+    private byte[] mData;
+    private Rect mRect;
 
     public PartLoadView(Context context) {
         super(context);
@@ -41,15 +46,21 @@ public class PartLoadView extends View {
 
     private void init(Context context){
         mContext = context;
+        mOptions = new BitmapFactory.Options();
+        mRect = new Rect(0, 0, getWidth(), getHeight());
     }
 
-    public void setInputStream(InputStream is){
+    public void setInputStream(byte[] bytes){
         try {
             // TODO: 2016/9/12 首次展示
-            mDecoder = BitmapRegionDecoder.newInstance(is, false);
-            BitmapFactory.Options tempOptions = new BitmapFactory.Options();
-
-
+            this.mData = bytes;
+            BitmapRegionDecoder.newInstance(mData, 0, mData.length, false);
+            mOptions.inJustDecodeBounds = true;
+            BitmapFactory.decodeByteArray(mData, 0, mData.length, mOptions);
+            int actualWidth = mOptions.outWidth;
+            int actualHeight = mOptions.outHeight;
+            mOptions.inJustDecodeBounds = false;
+            mOptions.inSampleSize = findBestSampleSize(actualWidth, actualHeight, getPhoneWidth(), getPhoneHeight());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,6 +90,10 @@ public class PartLoadView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+//        super.onDraw(canvas);
+        if (mData != null){
+            Bitmap bitmap = mDecoder.decodeRegion(mRect, mOptions);
+            canvas.drawBitmap(bitmap, 0, 0, null);
+        }
     }
 }
