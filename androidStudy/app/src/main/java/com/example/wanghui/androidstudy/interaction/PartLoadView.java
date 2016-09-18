@@ -12,6 +12,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.WindowManager;
+
+import com.example.wanghui.androidstudy.base.Log;
 
 import java.io.IOException;
 
@@ -69,7 +72,7 @@ public class PartLoadView extends View {
             int actualWidth = mOptions.outWidth;
             int actualHeight = mOptions.outHeight;
             mOptions.inJustDecodeBounds = false;
-            mOptions.inSampleSize = findBestSampleSize(actualWidth, actualHeight, getPhoneWidth(), getPhoneHeight());
+            mOptions.inSampleSize = findBestSampleSize(actualWidth, actualHeight, getMeasuredWidth(), getMeasuredHeight());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,15 +91,6 @@ public class PartLoadView extends View {
         return (int) n;
     }
 
-    // TODO: 2016/9/12 获取屏幕尺寸
-    private int getPhoneWidth(){
-        return 1;
-    }
-    // TODO: 2016/9/12 获取屏幕尺寸
-    private int getPhoneHeight(){
-        return 1;
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
 //        super.onDraw(canvas);
@@ -110,7 +104,7 @@ public class PartLoadView extends View {
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-
+            Log.d("wh------" + detector.getScaleFactor());
             return true;
         }
 
