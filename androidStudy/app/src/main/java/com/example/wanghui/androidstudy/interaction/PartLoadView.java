@@ -9,11 +9,11 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
-import android.widget.ImageView;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by wanghui on 2016/9/8.
@@ -25,6 +25,7 @@ public class PartLoadView extends View {
     private BitmapFactory.Options mOptions;
     private byte[] mData;
     private Rect mRect;
+    private ScaleGestureDetector mDetector;
 
     public PartLoadView(Context context) {
         super(context);
@@ -33,21 +34,29 @@ public class PartLoadView extends View {
 
     public PartLoadView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+
     }
 
     public PartLoadView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context);
+
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public PartLoadView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init(context);
+
     }
 
     private void init(Context context){
         mContext = context;
         mOptions = new BitmapFactory.Options();
         mRect = new Rect(0, 0, getWidth(), getHeight());
+        setOnTouchListener(new MyTouchListener());
+        mDetector = new ScaleGestureDetector(mContext, new MyScaleGestureListener());
     }
 
     public void setInputStream(byte[] bytes){
@@ -94,6 +103,34 @@ public class PartLoadView extends View {
         if (mData != null){
             Bitmap bitmap = mDecoder.decodeRegion(mRect, mOptions);
             canvas.drawBitmap(bitmap, 0, 0, null);
+        }
+    }
+
+    private class MyScaleGestureListener implements ScaleGestureDetector.OnScaleGestureListener{
+
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+
+            return true;
+        }
+
+        @Override
+        public boolean onScaleBegin(ScaleGestureDetector detector) {
+            return false;
+        }
+
+        @Override
+        public void onScaleEnd(ScaleGestureDetector detector) {
+
+        }
+    }
+
+    private class MyTouchListener implements OnTouchListener{
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            mDetector.onTouchEvent(event);
+            return false;
         }
     }
 }
