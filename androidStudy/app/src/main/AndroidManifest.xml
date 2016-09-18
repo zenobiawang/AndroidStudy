@@ -65,6 +65,7 @@
         <activity android:name=".animat.RocketLaunchAnimationActivity"/>
         <activity android:name=".view.TestConfigChangeActivity"
             android:configChanges="keyboardHidden|orientation"/>
+        <activity android:name=".interaction.PartLoadTestActivity"/>
 
         <!--<receiver android:name=".remoteviews.MyAppWidgetProvider">-->
             <!--<meta-data android:name="android.appwidget.AppWidgetProviderInfo"-->
